@@ -121,7 +121,7 @@ idea
 # Spyder project settings
 .spyderproject
 .spyproject
-
+desired_caps.json
 # Rope project settings
 .ropeproject
 
