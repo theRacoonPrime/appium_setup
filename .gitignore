@@ -124,7 +124,7 @@ idea
 desired_caps.json
 # Rope project settings
 .ropeproject
-
+.xcconfig
 # mkdocs documentation
 /site
 
