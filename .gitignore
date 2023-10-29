@@ -114,7 +114,9 @@ venv.bak/
 idea
 .idea
 .idea/
-
+chromedriver-Darwin
+chromedriver-Linux32
+chromedriver-Linux64
 # Spyder project settings
 .spyderproject
 .spyproject
