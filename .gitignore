@@ -2,8 +2,15 @@
 __pycache__/
 *.py[cod]
 *$py.class
-bin
-.json
+/bin/
+
+# Exclude chromedriver files
+chromedriver
+chromedriver.exe
+
+# Exclude JSON files
+*.json
+
 # C extensions
 *.so
 
