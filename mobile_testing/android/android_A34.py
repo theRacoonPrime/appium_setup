@@ -2,28 +2,26 @@ import pytest
 import unittest
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
-from selenium import webdriver as selenium_webdriver
+from time import sleep
+from appium.options.android import UiAutomator2Options
 
-# Define the test data as a list of search queries
+
+appium_capabilities = {
+    'automationName': 'UiAutomator2',  # Use UiAutomator2 for Android automation
+    'platformName': 'Android',
+    'udid': 'RZCW711MGVY',
+    'deviceName': 'A34',  # Example: 'Pixel 4' or 'emulator-5554'
+    'app': '/Users/andrey/Downloads/app-development-release (1).apk',
+    # 'appPackage': 'io.appium.android.apis',  # Example: 'com.example.myapp'
+    # 'appActivity': '.ApiDemos',
+}
+
+# Initialize the Appium driver for Android
+
+appium_capabilities = UiAutomator2Options().load_capabilities(appium_capabilities)
+command_executor='http://localhost:4723/wd/hub'
+
 search_queries = ["Appium", "Mobile Testing", "Automation"]
-
-
-@pytest.fixture(scope="function")       # First fixture
-def appium_driver():
-    # Short describe of capabilities
-    desired_capabilities = {
-        'platformName': 'Android',
-        'deviceName': 'A34',
-        'automationName': 'UiAutomator2',
-        'app': '/Users/andrey/Downloads/app-development-release (1).apk',
-        'udid': "RZCW711MGVY",  # Must be change for your UDID for ANDROID
-        "noReset": "true"
-    }
-
-    # Start the Appium driver
-    driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_capabilities)
-    yield driver
-    driver.quit()
 
 
 @pytest.mark.parametrize("search_query", search_queries)        # Parametrise decorator
