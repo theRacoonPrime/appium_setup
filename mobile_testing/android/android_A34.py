@@ -23,7 +23,7 @@ def appium_driver():
 
 
 @pytest.mark.parametrize("search_query", search_queries)
-def test_search(appium_driver, search_query):
+def test_search_and_click_button(appium_driver, search_query):
     # Find and interact with elements in the app
     search_field = appium_driver.find_element(MobileBy.ID, 'com.example.app:id/search_field')
     search_field.send_keys(search_query)
@@ -31,9 +31,11 @@ def test_search(appium_driver, search_query):
     search_button = appium_driver.find_element(MobileBy.ID, 'com.example.app:id/search_button')
     search_button.click()
 
-    # # Perform a swipe on the screen
-    # action = TouchAction(appium_driver)
-    # action.press(x=500, y=1500).move_to(x=500, y=500).release().perform()
+    # Find the "I already have account" button using the specified XPath
+    already_have_account_button = appium_driver.find_element(
+        MobileBy.XPATH, '//android.widget.Button[@content-desc="I already have account"]'
+    )
+    already_have_account_button.click()
 
     # Close the app
     appium_driver.close_app()
