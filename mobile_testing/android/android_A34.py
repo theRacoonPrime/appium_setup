@@ -29,8 +29,13 @@ def driver():
 
 def test_example(driver) -> None:
     el = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.Button[@content-desc="I already have account"]')
+    el_1 = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View')
+    # el_2 = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.Button[@content-desc="Continue"]')
+    # el_3 = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.FrameLayout[@resource-id="android:id/content"]')
     el.click()
     sleep(5)
+
+
 
 
 # @pytest.mark.parametrize("search_query", search_queries)        # Parametrise decorator
