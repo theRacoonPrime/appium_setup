@@ -1,9 +1,0 @@
-{
-  "platformName": "iOS",
-  "platformVersion": "17.0.3",
-  "deviceName": "iPhone Simulator",
-  "app": "/Users/andrey/Downloads/yettel-bank.ipa",
-  "automationName": "XCUITest",
-  "udid": "00008110-001865A91411401E",
-  "bundleId": "your.app.bundle.identifier"
-}
