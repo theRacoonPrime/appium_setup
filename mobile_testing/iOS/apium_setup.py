@@ -5,7 +5,6 @@ from appium.webdriver.common.appiumby import AppiumBy
 from time import sleep
 from appium.options.ios import XCUITestOptions
 
-
 appium_capabilities = {
     'automationName': 'xcuitest',
     'platformName': 'iOS',
@@ -26,10 +25,8 @@ def driver():
         ios_driver.quit()
 
 
-
-
-
-
-
-
-
+@pytest.mark.parametrize("element_locator, element_description", test_data)
+def test_example(driver, element_locator, element_description) -> None:
+    el = driver.find_element(by=AppiumBy.XPATH, value=element_locator)
+    el.click()
+    sleep(10)
