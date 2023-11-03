@@ -27,28 +27,28 @@ def driver():
         android_driver.quit()
 
 
-def test_example(driver) -> None:
-    el = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.Button[@content-desc="I already have account"]')
-    el_1 = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View')
-    # el_2 = driver.find_element(by=AppiumBy.ID, value='00000000-0000-051b-0000-003c00000004')
-    # el_3 = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.FrameLayout[@resource-id="android:id/content"]')
+# def test_example(driver) -> None:
+#     el = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.Button[@content-desc="I already have account"]')
+#     el_1 = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View')
+#     # el_2 = driver.find_element(by=AppiumBy.ID, value='00000000-0000-051b-0000-003c00000004')
+#     # el_3 = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.FrameLayout[@resource-id="android:id/content"]')
+#     el.click()
+#     # el_1.click()
+#     # el_2.click()
+#     # el_3.click()
+#     sleep(10)
+
+
+test_data = [
+    ('//android.widget.Button[@content-desc="I already have account"]', 'Button Element'),
+    ('//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View', 'FrameLayout Element'),
+]
+
+
+@pytest.mark.parametrize("element_locator, element_description", test_data)
+def test_example(driver, element_locator, element_description) -> None:
+    el = driver.find_element(by=AppiumBy.XPATH, value=element_locator)
     el.click()
-    # el_1.click()
-    # el_2.click()
-    # el_3.click()
     sleep(10)
 
 
-
-
-# @pytest.mark.parametrize("search_query", search_queries)        # Parametrise decorator
-# def test_search_and_click_button(appium_driver, search_query):
-#     # Find the "I already have account" button using the specified XPath
-#     already_have_account_button = appium_driver.find_element(
-#         AppiumBy.XPATH, '//android.widget.Button[@content-desc="I already have account"]'
-#     )
-#     already_have_account_button.click()
-#
-#     # Close the app
-#     appium_driver.close_app()
-#
