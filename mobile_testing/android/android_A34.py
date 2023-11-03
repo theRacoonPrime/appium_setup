@@ -12,26 +12,35 @@ appium_capabilities = {
     'udid': 'RZCW711MGVY',
     'deviceName': 'A34',  # Example: 'Pixel 4' or 'emulator-5554'
     'app': '/Users/andrey/Downloads/app-development-release (1).apk',
-    # 'appPackage': 'io.appium.android.apis',  # Example: 'com.example.myapp'
-    # 'appActivity': '.ApiDemos',
 }
 
+appium_capabilities = UiAutomator2Options().load_capabilities(appium_capabilities)
+appium_server_url = 'http://localhost:4723/wd/hub'
 # Initialize the Appium driver for Android
 
-appium_capabilities = UiAutomator2Options().load_capabilities(appium_capabilities)
-command_executor='http://localhost:4723/wd/hub'
 
-search_queries = ["Appium", "Mobile Testing", "Automation"]
+@pytest.fixture()
+def driver():
+    android_driver = webdriver.Remote(appium_server_url, options=appium_capabilities)
+    yield android_driver
+    if android_driver:
+        android_driver.quit()
 
 
-@pytest.mark.parametrize("search_query", search_queries)        # Parametrise decorator
-def test_search_and_click_button(appium_driver, search_query):
-    # Find the "I already have account" button using the specified XPath
-    already_have_account_button = appium_driver.find_element(
-        AppiumBy.XPATH, '//android.widget.Button[@content-desc="I already have account"]'
-    )
-    already_have_account_button.click()
+def test_example(driver) -> None:
+    el = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.Button[@content-desc="I already have account"]')
+    el.click()
+    sleep(5)
 
-    # Close the app
-    appium_driver.close_app()
 
+# @pytest.mark.parametrize("search_query", search_queries)        # Parametrise decorator
+# def test_search_and_click_button(appium_driver, search_query):
+#     # Find the "I already have account" button using the specified XPath
+#     already_have_account_button = appium_driver.find_element(
+#         AppiumBy.XPATH, '//android.widget.Button[@content-desc="I already have account"]'
+#     )
+#     already_have_account_button.click()
+#
+#     # Close the app
+#     appium_driver.close_app()
+#
