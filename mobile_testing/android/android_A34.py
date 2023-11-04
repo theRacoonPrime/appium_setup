@@ -2,6 +2,9 @@ import pytest
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from time import sleep
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 from appium.options.android import UiAutomator2Options
 
 # Desired capabilities to specify the Android device and app details
@@ -26,28 +29,60 @@ def driver():
         android_driver.quit()
 
 
-# test function
-def test_example(driver) -> None:
-    el = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.Button[@content-desc="I already have account"]')
-    el_1 = driver.find_element(by=AppiumBy.XPATH,
-                               value='//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View')
-
+def test_click_already_have_account_button(driver) -> None:
+    locator = '//android.widget.Button[@content-desc="I already have account"]'
+    el = driver.find_element(by=AppiumBy.XPATH, value=locator)
     el.click()
     sleep(10)
-
-
-# Test data
-test_data = [
-    ('//android.widget.Button[@content-desc="I already have account"]', 'Button Element'),
-    (
-    '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View',
-    'FrameLayout Element'),
-]
-
-
-# Parameterized test function
-@pytest.mark.parametrize("element_locator, element_description", test_data)
-def test_example_with_params(driver, element_locator, element_description) -> None:
-    el = driver.find_element(by=AppiumBy.XPATH, value=element_locator)
-    el.click()
+    locator_1 = '//android.widget.Button[@content-desc="Continue"]'
+    el_1 = driver.find_element(by=AppiumBy.XPATH, value=locator_1)
+    el_1.click()
     sleep(10)
+    locator_2 = '//android.widget.Button[@content-desc="Continue"]'
+    el_2 = driver.find_element(by=AppiumBy.XPATH, value=locator_2)
+    el_2.click()
+
+
+
+# def test_click_continue_by_xpath(driver) -> None:
+#     locator = '//android.widget.Button[@content-desc="Continue"]'
+#     el = driver.find_element(by=AppiumBy.XPATH, value=locator)
+#     el.click()
+#     sleep(10)
+
+# def test_click_continue_button(driver) -> None:
+#     locator = '//android.widget.Button[@content-desc="Continue"]'
+#     el = driver.find_element(by=AppiumBy.XPATH, value=locator)
+#     el.click()
+#     sleep(10)
+
+#
+# # test function
+# def test_example(driver) -> None:
+#     el = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.Button[@content-desc="I already have account"]')
+#     el_1 = driver.find_element(by=AppiumBy.XPATH,
+#                                value='//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget'
+#                                      '.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View'
+#                                      '/android.view.View')
+#
+#     el.click()
+#     el_1.click()
+#     sleep(10)
+#
+#
+# # Test data
+# test_data = [
+#     ('//android.widget.Button[@content-desc="I already have account"]', 'Button Element'),
+#     (
+#     '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget'
+#     '.FrameLayout/android.view.View/android.view.View/android.view.View',
+#     'FrameLayout Element'),
+# ]
+#
+#
+# # Parameterized test function
+# @pytest.mark.parametrize("element_locator, element_description", test_data)
+# def test_example_with_params(driver, element_locator, element_description) -> None:
+#     el = driver.find_element(by=AppiumBy.XPATH, value=element_locator)
+#     el.click()
+#     sleep(10)
