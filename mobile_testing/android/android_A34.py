@@ -33,11 +33,11 @@ def test_click_already_have_account_button(driver) -> None:
     locator = '//android.widget.Button[@content-desc="I already have account"]'
     el = driver.find_element(by=AppiumBy.XPATH, value=locator)
     el.click()
-    sleep(10)
+    sleep(5)
     locator_1 = '//android.widget.Button[@content-desc="Continue"]'
     el_1 = driver.find_element(by=AppiumBy.XPATH, value=locator_1)
     el_1.click()
-    sleep(10)
+    sleep(5)
     locator_2 = '//android.widget.Button[@content-desc="Continue"]'
     el_2 = driver.find_element(by=AppiumBy.XPATH, value=locator_2)
     el_2.click()
