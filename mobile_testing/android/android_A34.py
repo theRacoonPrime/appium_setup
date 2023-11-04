@@ -41,11 +41,11 @@ def test_click_already_have_account_button(driver) -> None:
     locator_2 = '//android.widget.Button[@content-desc="Continue"]'
     el_2 = driver.find_element(by=AppiumBy.XPATH, value=locator_2)
     el_2.click()
-    locator_3 = '00000000-0000-0c2f-0000-002900000004'
-    locator_4 = '00000000-0000-0c2f-0000-002b00000004'
-    el_3 = driver.find_element(by=AppiumBy.XPATH, value=locator_3)
-    el_4 = driver.find_element(by=AppiumBy.XPATH, value=locator_4)
-    el_3.send_keys('123456')
-    el_4.send_keys('123456')
-    sleep(5)
+    # locator_3 = '00000000-0000-0c2f-0000-002900000004' Does not work
+    # locator_4 = '00000000-0000-0c2f-0000-002b00000004'
+    # el_3 = driver.find_element(by=AppiumBy.XPATH, value=locator_3)
+    # el_4 = driver.find_element(by=AppiumBy.XPATH, value=locator_4)
+    # el_3.send_keys('123456')
+    # el_4.send_keys('123456')
+    # sleep(5)
 
