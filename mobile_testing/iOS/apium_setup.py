@@ -30,3 +30,12 @@ def test_example(driver, element_locator, element_description) -> None:
     el = driver.find_element(by=AppiumBy.XPATH, value=element_locator)
     el.click()
     sleep(10)
+
+
+
+
+
+
+
+
+
