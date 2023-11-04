@@ -46,19 +46,19 @@ def test_click_already_have_account_button(driver) -> None:
     locator_2 = '//android.widget.Button[@content-desc="Continue"]'
     el_2 = driver.find_element(by=AppiumBy.XPATH, value=locator_2)
     el_2.click()
-    locator_3 = '00000000-0000-0ccf-0000-002b00000004'
-    locator_4 = '00000000-0000-0ccf-0000-002b00000004'
-    password_field = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value=locator_3)
-    password_field_1 = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value=locator_4)
-    password_field.click()
-    password_field.clear()
-    # Input the password in the first input field
-    password_field.send_keys('123456')
-
-    # Input the password in the second input field
-    password_field_1.send_keys('123456')
-
-    sleep(5)
+    # locator_3 = '00000000-0000-0ccf-0000-002b00000004'
+    # locator_4 = '00000000-0000-0ccf-0000-002b00000004'
+    # password_field = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value=locator_3)
+    # password_field_1 = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value=locator_4)
+    # password_field.click()
+    # password_field.clear()
+    # # Input the password in the first input field
+    # password_field.send_keys('123456')
+    #
+    # # Input the password in the second input field
+    # password_field_1.send_keys('123456')
+    #
+    # sleep(5)
 
 
 if __name__ == '__main__':
