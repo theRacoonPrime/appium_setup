@@ -11,7 +11,6 @@ from selenium.webdriver.common.actions import interaction
 from selenium.webdriver.common.actions.action_builder import ActionBuilder
 from selenium.webdriver.common.actions.pointer_input import PointerInput
 
-
 # Desired capabilities to specify the Android device and app details
 appium_capabilities = {
     'automationName': 'UiAutomator2',  # Use UiAutomator2 for Android automation
@@ -29,43 +28,61 @@ appium_server_url = 'http://localhost:4723/wd/hub'
 # Initialize the Appium driver for Android using a fixture
 @pytest.fixture()
 def driver():
-    android_driver = webdriver.Remote(appium_server_url, options=appium_capabilities)
+    android_driver = webdriver.Remote('http://localhost:4723/wd/hub', options=appium_capabilities)
     yield android_driver
     if android_driver:
         android_driver.quit()
 
 
+# Common actions
+def click_element(driver, locator):
+    element = driver.find_element(by=AppiumBy.XPATH, value=locator)
+    element.click()
+
+
+def enter_text(driver, locator, text):
+    element = driver.find_element(by=AppiumBy.XPATH, value=locator)
+    element.click()
+    element.send_keys(text)
+
+
+# Test data
+
+locators = {
+    'already_have_account': '//android.widget.Button[@content-desc="I already have account"]',
+    'continue_button': '//android.widget.Button[@content-desc="Continue"]',
+    'password_field_1': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
+                        '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android'
+                        '.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]',
+    'password_field_2': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
+                        '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android'
+                        '.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2]',
+    'accept_button': '//android.widget.Button[@content-desc="Accept"]',
+    'thanks_button': '//android.widget.Button[@content-desc="Thanks, but not now"]',
+    'go_to_app_button': '//android.widget.Button[@content-desc="Go to the app"]',
+    'password_field_general': '//android.widget.EditText',
+}
+
+
+# Test functions
 def test_login(driver):
     driver.implicitly_wait(20)
-    locator = '//android.widget.Button[@content-desc="I already have account"]'
-    driver.find_element(by=AppiumBy.XPATH, value=locator).click()
-    locator_1 = '//android.widget.Button[@content-desc="Continue"]'
-    driver.find_element(by=AppiumBy.XPATH, value=locator_1).click()
-    locator_2 = '//android.widget.Button[@content-desc="Continue"]'
-    driver.find_element(by=AppiumBy.XPATH, value=locator_2).click()
+
+    click_element(driver, locators['already_have_account'])
+    click_element(driver, locators['continue_button'])
+    click_element(driver, locators['continue_button'])
+
     wait = WebDriverWait(driver, 20)
-    locator_3 = '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android' \
-                '.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android' \
-                '.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1] '
-    locator_4 = '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android' \
-                '.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android' \
-                '.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2] '
-    locator_5 = '//android.widget.Button[@content-desc="Continue"]'
-    locator_6 = '//android.widget.Button[@content-desc="Thanks, but not now"]'
-    locator_7 = '//android.widget.Button[@content-desc="Go to the app"]'
-    locator_8 = '//android.widget.EditText'
-    locator_9 = '//android.widget.Button[@content-desc="Accept"]'
-    element = wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locator_3)))
-    element.click()
-    element.send_keys("123456")
-    element_1 = wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locator_4)))
-    element_1.click()
-    element_1.send_keys("123456")
-    driver.find_element(by=AppiumBy.XPATH, value=locator_5).click()
-    driver.find_element(by=AppiumBy.XPATH, value=locator_6).click()
-    driver.find_element(by=AppiumBy.XPATH, value=locator_7).click()
-    element_2 = wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locator_8)))
-    element_2.click()
-    element_2.send_keys("123456")
-    driver.find_element(by=AppiumBy.XPATH, value=locator_9).click()
+
+    enter_text(driver, locators['password_field_1'], '123456')
+    enter_text(driver, locators['password_field_2'], '123456')
+
+    click_element(driver, locators['continue_button'])
+    click_element(driver, locators['thanks_button'])
+    click_element(driver, locators['go_to_app_button'])
+
+    enter_text(driver, locators['password_field_general'], '123456')
+
+    click_element(driver, locators['accept_button'])
+
     sleep(20)
