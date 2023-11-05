@@ -34,22 +34,20 @@ def driver():
         android_driver.quit()
 
 
-def test_click_already_have_account_button(driver) -> None:
+def test_click_already_have_account_button(driver):
+    driver.implicitly_wait(20)
     locator = '//android.widget.Button[@content-desc="I already have account"]'
-    el = driver.find_element(by=AppiumBy.XPATH, value=locator)
-    el.click()
-    sleep(3)
+    driver.find_element(by=AppiumBy.XPATH, value=locator).click()
     locator_1 = '//android.widget.Button[@content-desc="Continue"]'
-    el_1 = driver.find_element(by=AppiumBy.XPATH, value=locator_1)
-    el_1.click()
-    sleep(3)
+    driver.find_element(by=AppiumBy.XPATH, value=locator_1).click()
     locator_2 = '//android.widget.Button[@content-desc="Continue"]'
-    el_2 = driver.find_element(by=AppiumBy.XPATH, value=locator_2)
-    el_2.click()
+    driver.find_element(by=AppiumBy.XPATH, value=locator_2).click()
+    driver.find_element(AppiumBy.XPATH, value='//android.widget.ScrollView/android.widget.EditText[1]').send_keys('123456')
 
 
-def login_password(driver):
-    password_button = driver.find_elemnent(AppiumBy)
+# def login_password(driver):
+#     driver.find_element(AppiumBy.ID, value='00000000-0000-0e0f-0000-002900000004').click()
+#     sleep(5)
 
 #     locator_3 = 'android.widget.EditText'
 #     locator_4 = '//android.widget.ScrollView/android.widget.EditText[2]'
