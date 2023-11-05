@@ -50,10 +50,12 @@ def test_login(driver):
     locator_4 = '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android' \
                 '.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android' \
                 '.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2] '
+    locator_5 = '//android.widget.Button[@content-desc="Continue"]'
     element = wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locator_3)))
     element.click()
     element.send_keys("123456")
     element_1 = wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locator_4)))
     element_1.click()
     element_1.send_keys("123456")
+    driver.find_element(by=AppiumBy.XPATH, value=locator_5).click()
 
