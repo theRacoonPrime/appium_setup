@@ -38,28 +38,36 @@ def test_click_already_have_account_button(driver) -> None:
     locator = '//android.widget.Button[@content-desc="I already have account"]'
     el = driver.find_element(by=AppiumBy.XPATH, value=locator)
     el.click()
-    sleep(5)
+    sleep(3)
     locator_1 = '//android.widget.Button[@content-desc="Continue"]'
     el_1 = driver.find_element(by=AppiumBy.XPATH, value=locator_1)
     el_1.click()
-    sleep(5)
+    sleep(3)
     locator_2 = '//android.widget.Button[@content-desc="Continue"]'
     el_2 = driver.find_element(by=AppiumBy.XPATH, value=locator_2)
     el_2.click()
-    # locator_3 = '00000000-0000-0ccf-0000-002b00000004'
-    # locator_4 = '00000000-0000-0ccf-0000-002b00000004'
-    # password_field = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value=locator_3)
-    # password_field_1 = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value=locator_4)
-    # password_field.click()
-    # password_field.clear()
-    # # Input the password in the first input field
-    # password_field.send_keys('123456')
-    #
-    # # Input the password in the second input field
-    # password_field_1.send_keys('123456')
-    #
-    # sleep(5)
 
 
-if __name__ == '__main__':
-    pytest.main()
+def login_password(driver):
+    password_button = driver.find_elemnent(AppiumBy)
+
+#     locator_3 = 'android.widget.EditText'
+#     locator_4 = '//android.widget.ScrollView/android.widget.EditText[2]'
+#
+#     wait = WebDriverWait(driver, 10)
+#
+#     password_field = driver.find_element(by=AppiumBy.CLASS_NAME, value=locator_3)
+#     password_field_1 = driver.find_element(by=AppiumBy.XPATH, value=locator_4)
+#     password_field.click()
+#     # Input the password in the first input field
+#
+#     password_field.click()
+#     password_field.send_keys('123456')
+#     password_field_1.click()
+#     password_field_1.send_keys('123456')
+#
+#     sleep(5)
+#
+#
+# if __name__ == '__main__':
+#     pytest.main()
