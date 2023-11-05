@@ -14,11 +14,11 @@ from appium.options.android import UiAutomator2Options
 # Desired capabilities to specify the Android device and app details
 appium_capabilities = {
     'automationName': 'UiAutomator2',  # Use UiAutomator2 for Android automation
-    'platformName': 'Android',
-    'udid': 'RZCW711MGVY',
+    'platformName': 'Android',      # Platform for testing
+    'udid': 'RZCW711MGVY',          # UDID , you can find in terminal by command adb version
     'deviceName': 'A34',  # Example: 'Pixel 4' or 'emulator-5554'
     'app': '/Users/andrey/Downloads/app-development-release (1).apk',
-    'appWaitForLaunch': 'false',
+    'appWaitForLaunch': 'false',    # Avoid to wait starting app
 }
 
 appium_capabilities = UiAutomator2Options().load_capabilities(appium_capabilities)
@@ -85,4 +85,4 @@ def test_login(driver):
 
     click_element(driver, locators['accept_button'])
 
-    sleep(20)
+    sleep(10)
