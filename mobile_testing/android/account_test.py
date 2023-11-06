@@ -4,7 +4,7 @@ from appium.webdriver.common.appiumby import AppiumBy
 from time import sleep
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
-# from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as EC
 # from selenium.webdriver.common.by import By
 # from selenium.webdriver.common.action_chains import ActionChains
 # from selenium.webdriver.common.actions import interaction
@@ -61,9 +61,11 @@ locators = {
     'thanks_button': '//android.widget.Button[@content-desc="Thanks, but not now"]',
     'go_to_app_button': '//android.widget.Button[@content-desc="Go to the app"]',
     'password_field_general': '//android.widget.EditText',
+    'acc_button': '//android.widget.ScrollView/android.view.View[2]/android.view.View/android.view.View[1]'
 }
 
 
+# Test functions
 # Test functions
 def test_login(driver):
     driver.implicitly_wait(20)
@@ -75,18 +77,41 @@ def test_login(driver):
     wait = WebDriverWait(driver, 20)
 
     enter_text(driver, locators['password_field_1'], '123456')
+    # Hide the keyboard after entering text in the first password field
     driver.hide_keyboard()
+
     enter_text(driver, locators['password_field_2'], '123456')
+    # Hide the keyboard after entering text in the second password field
     driver.hide_keyboard()
 
     click_element(driver, locators['continue_button'])
     click_element(driver, locators['thanks_button'])
     click_element(driver, locators['go_to_app_button'])
 
-    enter_text(driver, locators['password_field_general'], '123456')
+    wait = WebDriverWait(driver, 20)
 
+    enter_text(driver, locators['password_field_general'], '123456')
     click_element(driver, locators['accept_button'])
 
-    sleep(10)
+    wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locators['acc_button'])))
+    click_element(driver, locators['acc_button'])
+    sleep(5)
 
+
+# //android.view.View[@content-desc="SecretAccauntxdd 200 RSD"] click on the acc
+# //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[2] tree dot buttons
+# //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2] copy button
+# //android.widget.Button[@content-desc="Cards"]
+# //android.widget.Button[@content-desc="Payment Limits"]
+# //android.widget.Button[@content-desc="Statements"]
+# //android.view.View[@content-desc="Balance information"]
+# //android.view.View[@content-desc="Account information"]
+# //android.view.View[@content-desc="Standing order"]
+# //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[1] come back from cards
+#  //android.widget.Button come back from payments limit
+#  //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[1] come back from statements
+#  //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[1] atemtp to exit from balance info
+#  //android.widget.ScrollView account info scroling
+# //android.view.View[@content-desc="Scrim"] exit from acc info
+# //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[1] exit from statement
 
