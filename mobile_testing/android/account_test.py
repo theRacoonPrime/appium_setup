@@ -83,7 +83,7 @@ locators = {
                              '.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android'
                              '.view.View/android.view.View[1]/android.widget.Button[1]',
     'acc_info_button': '//android.view.View[@content-desc="Balance information"]',
-    'exit_accinfo_button': '//android.widget.ScrollView',
+    'exit_accinfo_button': '//android.view.View[@content-desc="Scrim"]',
     'exit_balance_info': '//android.view.View[@content-desc="Scrim"]',
     'standing_order': '//android.view.View[@content-desc="Standing order"]',
     'exit_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
@@ -139,6 +139,10 @@ def test_account(driver):
     sleep(2)
     click_element(driver, locators['exit_balance_info'])
     sleep(2)
+    click_element(driver, locators['account_info_button'])
+    sleep(1)
+    click_element(driver, locators['exit_accinfo_button'])
+    sleep(1)
     # click_element(driver, locators['exit_button'])
     # sleep(2)
     # sleep(5)
