@@ -61,13 +61,15 @@ locators = {
     'thanks_button': '//android.widget.Button[@content-desc="Thanks, but not now"]',
     'go_to_app_button': '//android.widget.Button[@content-desc="Go to the app"]',
     'password_field_general': '//android.widget.EditText',
-    'acc_button': '//android.widget.ScrollView/android.view.View[2]/android.view.View/android.view.View[1]'
+    'acc_button': '//android.widget.ScrollView/android.view.View[2]/android.view.View/android.view.View[1]',
+    'tree_dot': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android'
+                '.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View['
+                '1]/android.widget.Button[2]',
 }
 
 
 # Test functions
-# Test functions
-def test_login(driver):
+def test_account(driver):
     driver.implicitly_wait(20)
 
     click_element(driver, locators['already_have_account'])
@@ -92,9 +94,10 @@ def test_login(driver):
 
     enter_text(driver, locators['password_field_general'], '123456')
     click_element(driver, locators['accept_button'])
-
     wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locators['acc_button'])))
     click_element(driver, locators['acc_button'])
+    sleep(5)
+    click_element(driver, locators['tree_dot'])
     sleep(5)
 
 
