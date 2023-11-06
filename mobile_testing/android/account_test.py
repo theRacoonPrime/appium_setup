@@ -2,6 +2,7 @@ import pytest
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from time import sleep
+from selenium.common import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support import expected_conditions as EC
@@ -38,7 +39,6 @@ def driver():
 def click_element(driver, locator):
     element = driver.find_element(by=AppiumBy.XPATH, value=locator)
     element.click()
-
 
 
 def enter_text(driver, locator, text):
@@ -82,10 +82,13 @@ locators = {
     'statement_exit_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget'
                              '.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android'
                              '.view.View/android.view.View[1]/android.widget.Button[1]',
-    'exit_balance_info': '//android.view.View[@content-desc="Scrim"]',
     'acc_info_button': '//android.view.View[@content-desc="Balance information"]',
     'exit_accinfo_button': '//android.widget.ScrollView',
-    'standing_order': '//android.view.View[@content-desc="Standing order"]'
+    'exit_balance_info': '//android.view.View[@content-desc="Scrim"]',
+    'standing_order': '//android.view.View[@content-desc="Standing order"]',
+    'exit_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
+                   '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view'
+                   '.View[1]/android.widget.Button',
 }
 
 
@@ -132,12 +135,12 @@ def test_account(driver):
     sleep(2)
     click_element(driver, locators['statement_exit_button'])
     sleep(2)
-    click_element(driver, locators['statement_exit_button'])
-    sleep(2)
-    click_element(driver, locators['standing_order'])
-    sleep(2)
-    wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locators['balance_information_button'])))
     click_element(driver, locators['balance_information_button'])
+    sleep(2)
+    click_element(driver, locators['exit_balance_info'])
+    sleep(2)
+    # click_element(driver, locators['exit_button'])
+    # sleep(2)
     # sleep(5)
     # click_element(driver, locators['exit_balance_info'])
     # sleep(2)
