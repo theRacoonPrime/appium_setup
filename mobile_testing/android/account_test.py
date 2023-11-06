@@ -72,6 +72,13 @@ locators = {
     'exit_card_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
                         '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android'
                         '.view.View[1]/android.widget.Button[1] ',
+    'payment_limits_button': '//android.widget.Button[@content-desc="Payment Limits"]',
+    'statement_button': '//android.widget.Button[@content-desc="Statements"]',
+    'balance_information_button': '//android.view.View[@content-desc="Balance information"]',
+    'account_info_button': '//android.view.View[@content-desc="Account information"]',
+    'standing_order_button': '//android.view.View[@content-desc="Standing order"]',
+    'exit_payment_limit': '//android.widget.Button',
+
 }
 
 
@@ -111,6 +118,11 @@ def test_account(driver):
     click_element(driver, locators['card_button'])
     click_element(driver, locators['exit_card_button'])
     sleep(3)
+    click_element(driver, locators['payment_limits_button'])
+    sleep(3)
+    click_element(driver,locators['exit_payment_limit'])
+    sleep(3)
+
 
 # Important widget
 # //android.view.View[@content-desc="SecretAccauntxdd 200 RSD"] click on the acc
