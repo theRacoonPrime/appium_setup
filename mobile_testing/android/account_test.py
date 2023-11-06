@@ -40,6 +40,7 @@ def click_element(driver, locator):
     element.click()
 
 
+
 def enter_text(driver, locator, text):
     element = driver.find_element(by=AppiumBy.XPATH, value=locator)
     element.click()
@@ -67,18 +68,24 @@ locators = {
                 '1]/android.widget.Button[2]',
     'copy_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
                    '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view'
-                   '.View[2]/android.view.View/android.view.View[2] ',
+                   '.View[2]/android.view.View/android.view.View[2]',
     'card_button': '//android.widget.Button[@content-desc="Cards"]',
     'exit_card_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
                         '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android'
-                        '.view.View[1]/android.widget.Button[1] ',
+                        '.view.View[1]/android.widget.Button[1]',
     'payment_limits_button': '//android.widget.Button[@content-desc="Payment Limits"]',
     'statement_button': '//android.widget.Button[@content-desc="Statements"]',
     'balance_information_button': '//android.view.View[@content-desc="Balance information"]',
     'account_info_button': '//android.view.View[@content-desc="Account information"]',
     'standing_order_button': '//android.view.View[@content-desc="Standing order"]',
     'exit_payment_limit': '//android.widget.Button',
-
+    'statement_exit_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget'
+                             '.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android'
+                             '.view.View/android.view.View[1]/android.widget.Button[1]',
+    'exit_balance_info': '//android.view.View[@content-desc="Scrim"]',
+    'acc_info_button': '//android.view.View[@content-desc="Balance information"]',
+    'exit_accinfo_button': '//android.widget.ScrollView',
+    'standing_order': '//android.view.View[@content-desc="Standing order"]'
 }
 
 
@@ -120,8 +127,25 @@ def test_account(driver):
     sleep(3)
     click_element(driver, locators['payment_limits_button'])
     sleep(3)
-    click_element(driver,locators['exit_payment_limit'])
-    sleep(3)
+    click_element(driver, locators['exit_payment_limit'])
+    click_element(driver, locators['statement_button'])
+    sleep(2)
+    click_element(driver, locators['statement_exit_button'])
+    sleep(2)
+    click_element(driver, locators['statement_exit_button'])
+    sleep(2)
+    click_element(driver, locators['standing_order'])
+    sleep(2)
+    wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locators['balance_information_button'])))
+    click_element(driver, locators['balance_information_button'])
+    # sleep(5)
+    # click_element(driver, locators['exit_balance_info'])
+    # sleep(2)
+    # click_element(driver, locators['acc_info_button'])
+    # sleep(2)
+    # click_element(driver, locators['exit_accinfo_button'])
+    # sleep(2)
+
 
 
 # Important widget
