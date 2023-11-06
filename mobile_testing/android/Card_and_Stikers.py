@@ -88,3 +88,4 @@ def test_login(driver):
     click_element(driver, locators['accept_button'])
 
     sleep(10)
+
