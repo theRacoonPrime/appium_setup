@@ -75,7 +75,9 @@ def test_login(driver):
     wait = WebDriverWait(driver, 20)
 
     enter_text(driver, locators['password_field_1'], '123456')
+    driver.hide_keyboard()
     enter_text(driver, locators['password_field_2'], '123456')
+    driver.hide_keyboard()
 
     click_element(driver, locators['continue_button'])
     click_element(driver, locators['thanks_button'])
