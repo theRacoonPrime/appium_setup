@@ -66,7 +66,7 @@ locators = {
 
 
 # Test functions
-def test_login(driver):
+def test_account(driver):
     driver.implicitly_wait(20)
 
     click_element(driver, locators['already_have_account'])
@@ -76,16 +76,39 @@ def test_login(driver):
     wait = WebDriverWait(driver, 20)
 
     enter_text(driver, locators['password_field_1'], '123456')
+    # Hide the keyboard after entering text in the first password field
     driver.hide_keyboard()
+
     enter_text(driver, locators['password_field_2'], '123456')
+    # Hide the keyboard after entering text in the second password field
     driver.hide_keyboard()
 
     click_element(driver, locators['continue_button'])
     click_element(driver, locators['thanks_button'])
     click_element(driver, locators['go_to_app_button'])
 
+    wait = WebDriverWait(driver, 20)
+
     enter_text(driver, locators['password_field_general'], '123456')
-
     click_element(driver, locators['accept_button'])
-
-    sleep(10)
+    wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locators['acc_button'])))
+    click_element(driver, locators['acc_button'])
+    sleep(5)
+    click_element(driver, locators['tree_dot'])
+    sleep(3)
+    click_element(driver, locators['copy_button'])
+    sleep(3)
+    click_element(driver, locators['card_button'])
+    click_element(driver, locators['exit_card_button'])
+    sleep(3)
+    click_element(driver, locators['payment_limits_button'])
+    sleep(3)
+    click_element(driver, locators['exit_payment_limit'])
+    click_element(driver, locators['statement_button'])
+    sleep(2)
+    click_element(driver, locators['statement_exit_button'])
+    sleep(2)
+    click_element(driver, locators['statement_exit_button'])
+    sleep(2)
+    click_element(driver, locators['standing_order'])
+    sleep(2)
