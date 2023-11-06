@@ -65,6 +65,13 @@ locators = {
     'tree_dot': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android'
                 '.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View['
                 '1]/android.widget.Button[2]',
+    'copy_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
+                   '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view'
+                   '.View[2]/android.view.View/android.view.View[2] ',
+    'card_button': '//android.widget.Button[@content-desc="Cards"]',
+    'exit_card_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
+                        '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android'
+                        '.view.View[1]/android.widget.Button[1] ',
 }
 
 
@@ -98,9 +105,14 @@ def test_account(driver):
     click_element(driver, locators['acc_button'])
     sleep(5)
     click_element(driver, locators['tree_dot'])
-    sleep(5)
+    sleep(3)
+    click_element(driver, locators['copy_button'])
+    sleep(3)
+    click_element(driver, locators['card_button'])
+    click_element(driver, locators['exit_card_button'])
+    sleep(3)
 
-
+# Important widget
 # //android.view.View[@content-desc="SecretAccauntxdd 200 RSD"] click on the acc
 # //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[2] tree dot buttons
 # //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2] copy button
