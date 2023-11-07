@@ -2,9 +2,10 @@ import pytest
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from time import sleep
+from selenium.common import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
-# from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as EC
 # from selenium.webdriver.common.by import By
 # from selenium.webdriver.common.action_chains import ActionChains
 # from selenium.webdriver.common.actions import interaction
@@ -14,11 +15,11 @@ from appium.options.android import UiAutomator2Options
 # Desired capabilities to specify the Android device and app details
 appium_capabilities = {
     'automationName': 'UiAutomator2',  # Use UiAutomator2 for Android automation
-    'platformName': 'Android',      # Platform for testing
-    'udid': 'RZCW711MGVY',          # UDID , you can find in terminal by command adb version
+    'platformName': 'Android',  # Platform for testing
+    'udid': 'RZCW711MGVY',  # UDID , you can find in terminal by command adb version
     'deviceName': 'A34',  # Example: 'Pixel 4' or 'emulator-5554'
     'app': '/Users/andrey/Downloads/app-development-release (1).apk',
-    'appWaitForLaunch': 'false',    # Avoid to wait starting app
+    'appWaitForLaunch': 'false',  # Avoid to wait starting app
 }
 
 appium_capabilities = UiAutomator2Options().load_capabilities(appium_capabilities)
@@ -65,7 +66,7 @@ locators = {
 
 
 # Test functions
-def test_login(driver):
+def test_account(driver):
     driver.implicitly_wait(20)
 
     click_element(driver, locators['already_have_account'])
@@ -75,17 +76,21 @@ def test_login(driver):
     wait = WebDriverWait(driver, 20)
 
     enter_text(driver, locators['password_field_1'], '123456')
+    # Hide the keyboard after entering text in the first password field
     driver.hide_keyboard()
+
     enter_text(driver, locators['password_field_2'], '123456')
+    # Hide the keyboard after entering text in the second password field
     driver.hide_keyboard()
 
     click_element(driver, locators['continue_button'])
     click_element(driver, locators['thanks_button'])
     click_element(driver, locators['go_to_app_button'])
 
+    wait = WebDriverWait(driver, 20)
+
     enter_text(driver, locators['password_field_general'], '123456')
-
     click_element(driver, locators['accept_button'])
-
-    sleep(10)
-
+    wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locators['acc_button'])))
+    click_element(driver, locators['acc_button'])
+    sleep(5)
