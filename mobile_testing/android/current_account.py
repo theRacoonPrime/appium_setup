@@ -2,7 +2,7 @@ import pytest
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from time import sleep
-from selenium.common import NoSuchElementException
+# from selenium.common import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support import expected_conditions as EC
@@ -15,12 +15,13 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # Desired capabilities to specify the Android device and app details
 appium_capabilities = {
-    'automationName': 'UiAutomator2',  # Use UiAutomator2 for Android automation
-    'platformName': 'Android',  # Platform for testing
-    'udid': 'RZCW711MGVY',  # UDID , you can find in terminal by command adb version
-    'deviceName': 'A34',  # Example: 'Pixel 4' or 'emulator-5554'
-    'app': '/Users/andrey/Downloads/app-development-release (1).apk',
-    'appWaitForLaunch': 'false',  # Avoid to wait starting app
+    'automationName': 'UiAutomator2',
+    'platformName': 'Android',
+    'udid': 'RZCW711MGVY',
+    'deviceName': 'A34',
+    'app': '/Users/andrey/Downloads/app-development-release (2).apk',
+    'appWaitForLaunch': 'false',
+    'autoGrantPermissions': True,  # It is important to avoid android notification
 }
 
 appium_capabilities = UiAutomator2Options().load_capabilities(appium_capabilities)
@@ -91,6 +92,10 @@ locators = {
     'exit_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
                    '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view'
                    '.View[1]/android.widget.Button',
+    'current_acc_rsd': '//android.view.View[@content-desc="Current account 1200RSD00210102101"]',
+    'current_acc_usd': '// android.view.View[ @ content - desc = "Current account 2200.00USD00210102202"]',
+    'current_acc_eu': '//android.view.View[@content-desc="Authorized account 3 700.00 EUR 0898528798"]',
+    'new_payment': '//android.widget.Button[@content-desc="New payment"]',
 }
 
 
@@ -122,7 +127,11 @@ def test_account(driver):
     click_element(driver, locators['accept_button'])
     wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locators['acc_button'])))
     click_element(driver, locators['acc_button'])
-    sleep(5)
+    sleep(2)
+    click_element(driver, locators['new_payment'])
+    sleep(1)
+    click_element(driver, locators['exit_button'])
+    sleep(1)
     click_element(driver, locators['tree_dot'])
     sleep(3)
     click_element(driver, locators['copy_button'])
@@ -146,4 +155,9 @@ def test_account(driver):
     click_element(driver, locators['exit_accinfo_button'])
     sleep(1)
     click_element(driver, locators['standing_order'])
+    click_element(driver, locators['exit_button'])
+    sleep(1)
 
+    # //android.view.View[@content-desc="Current account 1200RSD00210102101"]
+    # // android.view.View[ @ content - desc = "Current account 2200.00USD00210102202"]
+    #  //android.view.View[@content-desc="Authorized account 3 700.00 EUR 0898528798"]
