@@ -87,6 +87,7 @@ locators = {
     'exit_accinfo_button': '//android.view.View[@content-desc="Scrim"]',
     'exit_balance_info': '//android.view.View[@content-desc="Scrim"]',
     'standing_order': '//android.view.View[@content-desc="Standing order"]',
+    'device_name': '//android.widget.Button[@content-desc="Continue"]',
     'exit_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
                    '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view'
                    '.View[1]/android.widget.Button',
@@ -112,6 +113,7 @@ def test_account(driver):
 
     click_element(driver, locators['continue_button'])
     click_element(driver, locators['thanks_button'])
+    click_element(driver, locators['device_name'])
     click_element(driver, locators['go_to_app_button'])
 
     wait = WebDriverWait(driver, 20)
@@ -143,4 +145,5 @@ def test_account(driver):
     sleep(1)
     click_element(driver, locators['exit_accinfo_button'])
     sleep(1)
+    click_element(driver, locators['standing_order'])
 
