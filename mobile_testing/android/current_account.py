@@ -96,6 +96,8 @@ locators = {
     'current_acc_usd': '// android.view.View[ @ content - desc = "Current account 2200.00USD00210102202"]',
     'current_acc_eu': '//android.view.View[@content-desc="Authorized account 3 700.00 EUR 0898528798"]',
     'new_payment': '//android.widget.Button[@content-desc="New payment"]',
+    'amount_field': '//android.widget.EditText',
+    'choose_acc': '//android.widget.Button[@content-desc="Choose account"]',
 }
 
 
@@ -127,27 +129,32 @@ def test_account(driver):
     click_element(driver, locators['accept_button'])
     wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locators['acc_button'])))
     click_element(driver, locators['acc_button'])
-    sleep(2)
+    sleep(1)
     click_element(driver, locators['new_payment'])
+    sleep(1)
+    click_element(driver, locators['choose_acc'])
+    sleep(1)
+    click_element(driver, locators['exit_button'])
+    enter_text(driver, locators['amount_field'], '123456')
     sleep(1)
     click_element(driver, locators['exit_button'])
     sleep(1)
     click_element(driver, locators['tree_dot'])
-    sleep(3)
+    sleep(1)
     click_element(driver, locators['copy_button'])
-    sleep(3)
+    sleep(1)
     click_element(driver, locators['card_button'])
     click_element(driver, locators['exit_card_button'])
-    sleep(3)
+    sleep(1)
     click_element(driver, locators['payment_limits_button'])
-    sleep(3)
+    sleep(1)
     click_element(driver, locators['exit_payment_limit'])
     click_element(driver, locators['statement_button'])
-    sleep(2)
+    sleep(1)
     click_element(driver, locators['statement_exit_button'])
-    sleep(2)
+    sleep(1)
     click_element(driver, locators['balance_information_button'])
-    sleep(2)
+    sleep(1)
     click_element(driver, locators['exit_balance_info'])
     sleep(2)
     click_element(driver, locators['account_info_button'])
