@@ -30,5 +30,19 @@
   "current_acc_eu": "//android.view.View[@content-desc=\"Authorized account 3 700.00 EUR 0898528798\"]",
   "new_payment": "//android.widget.Button[@content-desc=\"New payment\"]",
   "amount_field": "//android.widget.EditText",
-  "choose_acc": "//android.widget.Button[@content-desc=\"Choose account\"]"
+  "choose_acc": "//android.widget.Button[@content-desc=\"Choose account\"]",
+  "curren_acc_from": "//android.view.View[\n# @content-desc=\"Current account 100210102101200 RSD\"]",
+  "saving_acc": "//android.view.View[@content-desc=\"Current account 100210102101200 RSD\"]",
+  "credit_acc": "//android.view.View[\n# @content-desc=\"Credit card account 1 007 0.00 EUR\"]",
+  "exit_button_from_acc": "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[1]",
+  "amount_field_transfer": "//android.widget.EditText",
+  "standing_order_nickname": "//android.widget.ScrollView/android.widget.EditText[2]",
+  "period_monthly": "//android.view.View[@content-desc=\"Monthly\"]",
+  "period_quarterly": "//android.view.View[@content-desc=\"Quarterly\"]",
+  "period_yearly":"//android.view.View[@content-desc=\"Yearly\"]",
+  "continue_button_acc": "//android.widget.Button[@content-desc=\"Continue\"]",
+  "exit_period": "//android.view.View[@content-desc=\"Scrim\"]",
+  "exit_standing_order": "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[1]",
+  "confirm_payment_button": "//android.widget.Button[@content-desc=\"Confirm\"]",
+   "done_button": "//android.widget.Button[@content-desc=\"Done\"]"
 }

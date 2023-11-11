@@ -109,3 +109,20 @@ def test_account(driver):
     ]
 
     perform_actions_with_wait(driver, actions)
+
+# new payment //android.widget.Button[@content-desc="New payment"] current acc from //android.view.View[
+# @content-desc="Current account 100210102101200 RSD"] choose acc //android.widget.Button[@content-desc="Choose
+# account"] current_acc_rsd //android.view.View[@content-desc="Current account 100210102101200 RSD"] saving_acc
+# //android.view.View[@content-desc="Saving account 1 MB122333 700 RSD"] credit_acc//android.view.View[
+# @content-desc="Credit card account 1 007 0.00 EUR"] exit button from acc chose //android.widget.FrameLayout[
+# @resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android
+# .view.View/android.view.View/android.view.View[1]/android.widget.Button[1] amount field //android.widget.EditText
+# standing order nickname //android.widget.ScrollView/android.widget.EditText[2] period chose  //android.view.View[
+# @content-desc="Monthly"] //android.view.View[@content-desc="Quarterly"] //android.view.View[@content-desc="Yearly"]
+# continue button //android.widget.Button[@content-desc="Continue"]
+# exit from period //android.view.View[@content-desc="Scrim"] exit button from standing order
+# //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget
+# .FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[1]
+# confirm payment button  //android.widget.Button[@content-desc="Confirm"]
+#  done button //android.widget.Button[@content-desc="Done"]
+
