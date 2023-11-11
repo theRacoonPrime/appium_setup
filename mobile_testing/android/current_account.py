@@ -109,5 +109,3 @@ def test_account(driver):
     ]
 
     perform_actions_with_wait(driver, actions)
-
-
