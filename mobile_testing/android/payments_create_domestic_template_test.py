@@ -12,6 +12,10 @@ from selenium.webdriver.support import expected_conditions as EC
 # from selenium.webdriver.common.actions.action_builder import ActionBuilder
 # from selenium.webdriver.common.actions.pointer_input import PointerInput
 
+# Load locators from JSON file
+with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/test_data.json') as f:
+    locators = json.load(f)
+
 # Desired capabilities to specify the Android device and app details
 appium_capabilities = {
     'automationName': 'UiAutomator2',
@@ -26,10 +30,6 @@ appium_capabilities = {
 appium_capabilities = UiAutomator2Options().load_capabilities(appium_capabilities)
 appium_server_url = 'http://localhost:4723/wd/hub'
 
-# Read locators from JSON file
-with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/test_data.json') as f:
-    locators = json.load(f)
-
 
 # Initialize the Appium driver for Android using a fixture
 @pytest.fixture()
@@ -41,78 +41,71 @@ def driver():
 
 
 # Common actions
-def click_element(driver, locator):
-    element = driver.find_element(by=AppiumBy.XPATH, value=locator)
+def wait_and_click(driver, locator):
+    element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, locator)))
     element.click()
 
 
-def enter_text(driver, locator, text):
-    element = driver.find_element(by=AppiumBy.XPATH, value=locator)
+def enter_text_and_hide_keyboard(driver, locator, text):
+    element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, locator)))
     element.click()
     element.send_keys(text)
+    driver.hide_keyboard()
 
 
-# Test data
+def perform_actions_with_wait(driver, actions):
+    wait = WebDriverWait(driver, 20)
+
+    for action in actions:
+        action_type = action.get('action')
+        locator = action.get('locator')
+        text = action.get('text')
+
+        if action_type == 'wait_and_click':
+            wait_and_click(driver, locator)
+        elif action_type == 'enter_text_and_hide_keyboard':
+            enter_text_and_hide_keyboard(driver, locator, text)
+
+        # Add sleep or wait conditions as needed between actions
+        sleep(1)
+
+
 def test_account(driver):
     driver.implicitly_wait(20)
 
-    click_element(driver, locators['already_have_account'])
-    click_element(driver, locators['continue_button'])
-    click_element(driver, locators['continue_button'])
+    actions = [
+        {'action': 'wait_and_click', 'locator': locators['already_have_account']},
+        {'action': 'wait_and_click', 'locator': locators['continue_button']},
+        {'action': 'wait_and_click', 'locator': locators['continue_button']},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators['password_field_1'], 'text': '123456'},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators['password_field_2'], 'text': '123456'},
+        {'action': 'wait_and_click', 'locator': locators['continue_button']},
+        {'action': 'wait_and_click', 'locator': locators['thanks_button']},
+        {'action': 'wait_and_click', 'locator': locators['device_name']},
+        {'action': 'wait_and_click', 'locator': locators['go_to_app_button']},
+        {'action': 'wait_and_click', 'locator': locators['password_field_general']},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators['password_field_general'], 'text': '123456'},
+        {'action': 'wait_and_click', 'locator': locators['accept_button']},
+        {'action': 'wait_and_click', 'locator': locators['acc_button']},
+        {'action': 'wait_and_click', 'locator': locators['new_payment']},
+        {'action': 'wait_and_click', 'locator': locators['choose_acc']},
+        {'action': 'wait_and_click', 'locator': locators['exit_button']},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators['amount_field'], 'text': '123456'},
+        {'action': 'wait_and_click', 'locator': locators['exit_button']},
+        {'action': 'wait_and_click', 'locator': locators['tree_dot']},
+        {'action': 'wait_and_click', 'locator': locators['copy_button']},
+        {'action': 'wait_and_click', 'locator': locators['card_button']},
+        {'action': 'wait_and_click', 'locator': locators['exit_card_button']},
+        {'action': 'wait_and_click', 'locator': locators['payment_limits_button']},
+        {'action': 'wait_and_click', 'locator': locators['exit_payment_limit']},
+        {'action': 'wait_and_click', 'locator': locators['statement_button']},
+        {'action': 'wait_and_click', 'locator': locators['statement_exit_button']},
+        {'action': 'wait_and_click', 'locator': locators['balance_information_button']},
+        {'action': 'wait_and_click', 'locator': locators['exit_balance_info']},
+        {'action': 'wait_and_click', 'locator': locators['account_info_button']},
+        {'action': 'wait_and_click', 'locator': locators['exit_accinfo_button']},
+        {'action': 'wait_and_click', 'locator': locators['standing_order']},
+        {'action': 'wait_and_click', 'locator': locators['exit_button']},
+    ]
 
-    wait = WebDriverWait(driver, 20)
-
-    enter_text(driver, locators['password_field_1'], '123456')
-    # Hide the keyboard after entering text in the first password field
-    driver.hide_keyboard()
-
-    enter_text(driver, locators['password_field_2'], '123456')
-    # Hide the keyboard after entering text in the second password field
-    driver.hide_keyboard()
-
-    click_element(driver, locators['continue_button'])
-    click_element(driver, locators['thanks_button'])
-    click_element(driver, locators['device_name'])
-    click_element(driver, locators['go_to_app_button'])
-
-    wait = WebDriverWait(driver, 20)
-
-    enter_text(driver, locators['password_field_general'], '123456')
-    click_element(driver, locators['accept_button'])
-    wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locators['acc_button'])))
-    click_element(driver, locators['acc_button'])
-    sleep(1)
-    click_element(driver, locators['new_payment'])
-    sleep(1)
-    click_element(driver, locators['choose_acc'])
-    sleep(1)
-    click_element(driver, locators['exit_button'])
-    enter_text(driver, locators['amount_field'], '123456')
-    sleep(1)
-    click_element(driver, locators['exit_button'])
-    sleep(1)
-    click_element(driver, locators['tree_dot'])
-    sleep(1)
-    click_element(driver, locators['copy_button'])
-    sleep(1)
-    click_element(driver, locators['card_button'])
-    click_element(driver, locators['exit_card_button'])
-    sleep(1)
-    click_element(driver, locators['payment_limits_button'])
-    sleep(1)
-    click_element(driver, locators['exit_payment_limit'])
-    click_element(driver, locators['statement_button'])
-    sleep(1)
-    click_element(driver, locators['statement_exit_button'])
-    sleep(1)
-    click_element(driver, locators['balance_information_button'])
-    sleep(1)
-    click_element(driver, locators['exit_balance_info'])
-    sleep(2)
-    click_element(driver, locators['account_info_button'])
-    sleep(1)
-    click_element(driver, locators['exit_accinfo_button'])
-    sleep(1)
-    click_element(driver, locators['standing_order'])
-    click_element(driver, locators['exit_button'])
-    sleep(1)
+    perform_actions_with_wait(driver, actions)
