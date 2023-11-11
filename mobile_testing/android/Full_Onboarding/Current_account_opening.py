@@ -1,8 +1,8 @@
+import json
 import pytest
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from time import sleep
-from selenium.common import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support import expected_conditions as EC
@@ -12,14 +12,19 @@ from selenium.webdriver.support import expected_conditions as EC
 # from selenium.webdriver.common.actions.action_builder import ActionBuilder
 # from selenium.webdriver.common.actions.pointer_input import PointerInput
 
+# Load locators from JSON file
+with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/test_data.json') as f:
+    locators = json.load(f)
+
 # Desired capabilities to specify the Android device and app details
 appium_capabilities = {
-    'automationName': 'UiAutomator2',  # Use UiAutomator2 for Android automation
-    'platformName': 'Android',  # Platform for testing
-    'udid': 'RZCW711MGVY',  # UDID , you can find in terminal by command adb version
-    'deviceName': 'A34',  # Example: 'Pixel 4' or 'emulator-5554'
-    'app': '/Users/andrey/Downloads/app-development-release (1).apk',
-    'appWaitForLaunch': 'false',  # Avoid to wait starting app
+    'automationName': 'UiAutomator2',
+    'platformName': 'Android',
+    'udid': 'RZCW711MGVY',
+    'deviceName': 'A34',
+    'app': '/Users/andrey/Downloads/app-development-release (2).apk',
+    'appWaitForLaunch': 'false',
+    'autoGrantPermissions': True,  # It is important to avoid android notification
 }
 
 appium_capabilities = UiAutomator2Options().load_capabilities(appium_capabilities)
@@ -36,61 +41,71 @@ def driver():
 
 
 # Common actions
-def click_element(driver, locator):
-    element = driver.find_element(by=AppiumBy.XPATH, value=locator)
+def wait_and_click(driver, locator):
+    element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, locator)))
     element.click()
 
 
-def enter_text(driver, locator, text):
-    element = driver.find_element(by=AppiumBy.XPATH, value=locator)
+def enter_text_and_hide_keyboard(driver, locator, text):
+    element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, locator)))
     element.click()
     element.send_keys(text)
+    driver.hide_keyboard()
 
 
-# Test data
+def perform_actions_with_wait(driver, actions):
+    wait = WebDriverWait(driver, 20)
 
-locators = {
-    'already_have_account': '//android.widget.Button[@content-desc="I already have account"]',
-    'continue_button': '//android.widget.Button[@content-desc="Continue"]',
-    'password_field_1': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
-                        '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android'
-                        '.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]',
-    'password_field_2': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
-                        '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android'
-                        '.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2]',
-    'accept_button': '//android.widget.Button[@content-desc="Accept"]',
-    'thanks_button': '//android.widget.Button[@content-desc="Thanks, but not now"]',
-    'go_to_app_button': '//android.widget.Button[@content-desc="Go to the app"]',
-    'password_field_general': '//android.widget.EditText',
-}
+    for action in actions:
+        action_type = action.get('action')
+        locator = action.get('locator')
+        text = action.get('text')
+
+        if action_type == 'wait_and_click':
+            wait_and_click(driver, locator)
+        elif action_type == 'enter_text_and_hide_keyboard':
+            enter_text_and_hide_keyboard(driver, locator, text)
+
+        # Add sleep or wait conditions as needed between actions
+        sleep(1)
 
 
-# Test functions
 def test_account(driver):
     driver.implicitly_wait(20)
 
-    click_element(driver, locators['already_have_account'])
-    click_element(driver, locators['continue_button'])
-    click_element(driver, locators['continue_button'])
+    actions = [
+        {'action': 'wait_and_click', 'locator': locators['already_have_account']},
+        {'action': 'wait_and_click', 'locator': locators['continue_button']},
+        {'action': 'wait_and_click', 'locator': locators['continue_button']},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators['password_field_1'], 'text': '123456'},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators['password_field_2'], 'text': '123456'},
+        {'action': 'wait_and_click', 'locator': locators['continue_button']},
+        {'action': 'wait_and_click', 'locator': locators['thanks_button']},
+        {'action': 'wait_and_click', 'locator': locators['device_name']},
+        {'action': 'wait_and_click', 'locator': locators['go_to_app_button']},
+        {'action': 'wait_and_click', 'locator': locators['password_field_general']},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators['password_field_general'], 'text': '123456'},
+        {'action': 'wait_and_click', 'locator': locators['accept_button']},
+        {'action': 'wait_and_click', 'locator': locators['acc_button']},
+        {'action': 'wait_and_click', 'locator': locators['new_payment']},
+        {'action': 'wait_and_click', 'locator': locators['choose_acc']},
+        {'action': 'wait_and_click', 'locator': locators['exit_button']},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators['amount_field'], 'text': '123456'},
+        {'action': 'wait_and_click', 'locator': locators['exit_button']},
+        {'action': 'wait_and_click', 'locator': locators['tree_dot']},
+        {'action': 'wait_and_click', 'locator': locators['copy_button']},
+        {'action': 'wait_and_click', 'locator': locators['card_button']},
+        {'action': 'wait_and_click', 'locator': locators['exit_card_button']},
+        {'action': 'wait_and_click', 'locator': locators['payment_limits_button']},
+        {'action': 'wait_and_click', 'locator': locators['exit_payment_limit']},
+        {'action': 'wait_and_click', 'locator': locators['statement_button']},
+        {'action': 'wait_and_click', 'locator': locators['statement_exit_button']},
+        {'action': 'wait_and_click', 'locator': locators['balance_information_button']},
+        {'action': 'wait_and_click', 'locator': locators['exit_balance_info']},
+        {'action': 'wait_and_click', 'locator': locators['account_info_button']},
+        {'action': 'wait_and_click', 'locator': locators['exit_accinfo_button']},
+        {'action': 'wait_and_click', 'locator': locators['standing_order']},
+        {'action': 'wait_and_click', 'locator': locators['exit_button']},
+    ]
 
-    wait = WebDriverWait(driver, 20)
-
-    enter_text(driver, locators['password_field_1'], '123456')
-    # Hide the keyboard after entering text in the first password field
-    driver.hide_keyboard()
-
-    enter_text(driver, locators['password_field_2'], '123456')
-    # Hide the keyboard after entering text in the second password field
-    driver.hide_keyboard()
-
-    click_element(driver, locators['continue_button'])
-    click_element(driver, locators['thanks_button'])
-    click_element(driver, locators['go_to_app_button'])
-
-    wait = WebDriverWait(driver, 20)
-
-    enter_text(driver, locators['password_field_general'], '123456')
-    click_element(driver, locators['accept_button'])
-    wait.until(EC.presence_of_element_located((AppiumBy.XPATH, locators['acc_button'])))
-    click_element(driver, locators['acc_button'])
-    sleep(5)
+    perform_actions_with_wait(driver, actions)
