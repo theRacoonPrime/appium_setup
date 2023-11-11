@@ -1,17 +1,11 @@
+import json
 import pytest
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from time import sleep
-# from selenium.common import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support import expected_conditions as EC
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.common.action_chains import ActionChains
-# from selenium.webdriver.common.actions import interaction
-# from selenium.webdriver.common.actions.action_builder import ActionBuilder
-# from selenium.webdriver.common.actions.pointer_input import PointerInput
-
 
 # Desired capabilities to specify the Android device and app details
 appium_capabilities = {
@@ -26,6 +20,10 @@ appium_capabilities = {
 
 appium_capabilities = UiAutomator2Options().load_capabilities(appium_capabilities)
 appium_server_url = 'http://localhost:4723/wd/hub'
+
+# Read locators from JSON file
+with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/test_data.json') as f:        # Do not use absolute path, root is enough
+    locators = json.load(f)
 
 
 # Initialize the Appium driver for Android using a fixture
@@ -50,57 +48,6 @@ def enter_text(driver, locator, text):
 
 
 # Test data
-
-locators = {
-    'already_have_account': '//android.widget.Button[@content-desc="I already have account"]',
-    'continue_button': '//android.widget.Button[@content-desc="Continue"]',
-    'password_field_1': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
-                        '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android'
-                        '.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]',
-    'password_field_2': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
-                        '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android'
-                        '.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2]',
-    'accept_button': '//android.widget.Button[@content-desc="Accept"]',
-    'thanks_button': '//android.widget.Button[@content-desc="Thanks, but not now"]',
-    'go_to_app_button': '//android.widget.Button[@content-desc="Go to the app"]',
-    'password_field_general': '//android.widget.EditText',
-    'acc_button': '//android.widget.ScrollView/android.view.View[2]/android.view.View/android.view.View[1]',
-    'tree_dot': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android'
-                '.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View['
-                '1]/android.widget.Button[2]',
-    'copy_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
-                   '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view'
-                   '.View[2]/android.view.View/android.view.View[2]',
-    'card_button': '//android.widget.Button[@content-desc="Cards"]',
-    'exit_card_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
-                        '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android'
-                        '.view.View[1]/android.widget.Button[1]',
-    'payment_limits_button': '//android.widget.Button[@content-desc="Payment Limits"]',
-    'statement_button': '//android.widget.Button[@content-desc="Statements"]',
-    'balance_information_button': '//android.view.View[@content-desc="Balance information"]',
-    'account_info_button': '//android.view.View[@content-desc="Account information"]',
-    'standing_order_button': '//android.view.View[@content-desc="Standing order"]',
-    'exit_payment_limit': '//android.widget.Button',
-    'statement_exit_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget'
-                             '.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android'
-                             '.view.View/android.view.View[1]/android.widget.Button[1]',
-    'acc_info_button': '//android.view.View[@content-desc="Balance information"]',
-    'exit_accinfo_button': '//android.view.View[@content-desc="Scrim"]',
-    'exit_balance_info': '//android.view.View[@content-desc="Scrim"]',
-    'standing_order': '//android.view.View[@content-desc="Standing order"]',
-    'device_name': '//android.widget.Button[@content-desc="Continue"]',
-    'exit_button': '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout'
-                   '/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view'
-                   '.View[1]/android.widget.Button',
-    'current_acc_rsd': '//android.view.View[@content-desc="Current account 1200RSD00210102101"]',
-    'current_acc_usd': '// android.view.View[ @ content - desc = "Current account 2200.00USD00210102202"]',
-    'current_acc_eu': '//android.view.View[@content-desc="Authorized account 3 700.00 EUR 0898528798"]',
-    'new_payment': '//android.widget.Button[@content-desc="New payment"]',
-    'amount_field': '//android.widget.EditText',
-    'choose_acc': '//android.widget.Button[@content-desc="Choose account"]',
-}
-
-
 def test_account(driver):
     driver.implicitly_wait(20)
 
@@ -164,6 +111,7 @@ def test_account(driver):
     click_element(driver, locators['standing_order'])
     click_element(driver, locators['exit_button'])
     sleep(1)
+
 
     # //android.view.View[@content-desc="Current account 1200RSD00210102101"]
     # // android.view.View[ @ content - desc = "Current account 2200.00USD00210102202"]
