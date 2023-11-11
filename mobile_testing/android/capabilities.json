@@ -1,0 +1,9 @@
+{
+  "automationName": "UiAutomator2",
+  "platformName": "Android",
+  "udid": "RZCW711MGVY",
+  "deviceName": "A34",
+  "app": "/Users/andrey/Downloads/app-development-release (2).apk",
+  "appWaitForLaunch": "false",
+  "autoGrantPermissions": true
+}

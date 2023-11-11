@@ -19,19 +19,15 @@ def load_locators():
     with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/test_data.json') as f:
         return json.load(f)
 
+
 # Desired capabilities to specify the Android device and app details
-appium_capabilities = {
-    'automationName': 'UiAutomator2',
-    'platformName': 'Android',
-    'udid': 'RZCW711MGVY',
-    'deviceName': 'A34',
-    'app': '/Users/andrey/Downloads/app-development-release (2).apk',
-    'appWaitForLaunch': 'false',
-    'autoGrantPermissions': True,  # It is important to avoid android notification
-}
+with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/capabilities.json') as f:
+    appium_capabilities = json.load(f)
+
 
 appium_capabilities = UiAutomator2Options().load_capabilities(appium_capabilities)
 appium_server_url = 'http://localhost:4723/wd/hub'
+
 
 # Initialize the Appium driver for Android using a fixture
 @pytest.fixture
@@ -41,16 +37,19 @@ def driver():
     if android_driver:
         android_driver.quit()
 
+
 # Common actions
 def wait_and_click(driver, locator):
     element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, locator)))
     element.click()
+
 
 def enter_text_and_hide_keyboard(driver, locator, text):
     element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, locator)))
     element.click()
     element.send_keys(text)
     driver.hide_keyboard()
+
 
 # Fixture for perform_actions_with_wait
 @pytest.fixture
