@@ -7,11 +7,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support import expected_conditions as EC
 from appium.webdriver.common.touch_action import TouchAction
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.common.action_chains import ActionChains
-# from selenium.webdriver.common.actions import interaction
-# from selenium.webdriver.common.actions.action_builder import ActionBuilder
-# from selenium.webdriver.common.actions.pointer_input import PointerInput
 
 
 # Load locators from JSON file
@@ -22,7 +17,6 @@ def load_locators():
 
 
 # Desired capabilities to specify the Android device and app details
-
 @pytest.fixture
 def appium_capabilities():
     # Load appium_capabilities from JSON file
@@ -34,9 +28,8 @@ def appium_capabilities():
 
     return capabilities
 
+
 # Appium server url
-
-
 @pytest.fixture
 def appium_server_url():
     return 'http://localhost:4723/wd/hub'
@@ -63,6 +56,19 @@ def enter_text_and_hide_keyboard(driver, locator, text):
     driver.hide_keyboard()
 
 
+# Swipe action
+def swipe(driver):
+    # Define swipe coordinates (adjust as needed)
+    start_x = 150
+    start_y = 400
+    end_x = 150
+    end_y = 200
+    duration = 1000  # Duration in milliseconds
+
+    # Perform the swipe action
+    driver.swipe(start_x, start_y, end_x, end_y, duration)
+
+
 # Fixture for perform_actions_with_wait
 @pytest.fixture
 def perform_actions_with_wait(driver):
@@ -76,6 +82,8 @@ def perform_actions_with_wait(driver):
                 wait_and_click(driver, locator)
             elif action_type == 'enter_text_and_hide_keyboard':
                 enter_text_and_hide_keyboard(driver, locator, text)
+            elif action_type == 'swipe':
+                swipe(driver)
 
             # Add sleep or wait conditions as needed between actions
             sleep(1)
@@ -112,6 +120,7 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['data_choose_menu']},
         {'action': 'wait_and_click', 'locator': locators_data['quarterly_choose_menu']},
         {'action': 'wait_and_click', 'locator': locators_data['exit_choose_menu']},
+        {'action': 'swipe'},
         {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['standing_order_choose_menu'], 'text': '123'},
         {'action': 'wait_and_click', 'locator': locators_data['continue_choose_menu']},
         {'action': 'wait_and_click', 'locator': locators_data['confirm_choose_menu']},
@@ -135,3 +144,4 @@ def test_account(driver, perform_actions_with_wait, load_locators):
     ]
 
     perform_actions_with_wait(actions)
+
