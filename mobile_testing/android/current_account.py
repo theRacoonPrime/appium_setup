@@ -21,21 +21,30 @@ def load_locators():
 
 
 # Desired capabilities to specify the Android device and app details
-with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/capabilities.json') as f:
-    appium_capabilities = json.load(f)
 
-
-appium_capabilities = UiAutomator2Options().load_capabilities(appium_capabilities)
-appium_server_url = 'http://localhost:4723/wd/hub'
-
-
-# Initialize the Appium driver for Android using a fixture
 @pytest.fixture
-def driver():
-    android_driver = webdriver.Remote('http://localhost:4723/wd/hub', options=appium_capabilities)
-    yield android_driver
-    if android_driver:
-        android_driver.quit()
+def appium_capabilities():
+    # Load appium_capabilities from JSON file
+    with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/capabilities.json') as f:
+        capabilities = json.load(f)
+
+    # Configure appium_capabilities using UiAutomator2Options
+    capabilities = UiAutomator2Options().load_capabilities(capabilities)
+
+    return capabilities
+
+
+@pytest.fixture
+def appium_server_url():
+    return 'http://localhost:4723/wd/hub'
+
+
+@pytest.fixture
+def driver(appium_capabilities, appium_server_url):
+    driver = webdriver.Remote(appium_server_url, options=appium_capabilities)
+    yield driver
+    if driver:
+        driver.quit()
 
 
 # Common actions
