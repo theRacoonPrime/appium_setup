@@ -6,6 +6,7 @@ from time import sleep
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support import expected_conditions as EC
+from appium.webdriver.common.touch_action import TouchAction
 # from selenium.webdriver.common.by import By
 # from selenium.webdriver.common.action_chains import ActionChains
 # from selenium.webdriver.common.actions import interaction
@@ -32,6 +33,8 @@ def appium_capabilities():
     capabilities = UiAutomator2Options().load_capabilities(capabilities)
 
     return capabilities
+
+# Appium server url
 
 
 @pytest.fixture
@@ -101,9 +104,20 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['acc_button']},
         {'action': 'wait_and_click', 'locator': locators_data['new_payment']},
         {'action': 'wait_and_click', 'locator': locators_data['choose_acc']},
+        {'action': 'wait_and_click', 'locator': locators_data['current_acc_choose']},
+        {'action': 'wait_and_click', 'locator': locators_data['choose_acc_to_menu']},
+        {'action': 'wait_and_click', 'locator': locators_data['saving_acc_menu_to']},
+        # {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['amount_field'], 'text': '123'},
+        {'action': 'wait_and_click', 'locator': locators_data['data_choose_menu']},
+        {'action': 'wait_and_click', 'locator': locators_data['quarterly_choose_menu']},
+        {'action': 'wait_and_click', 'locator': locators_data['exit_choose_menu']},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['standing_order_choose_menu'], 'text': '123'},
+        {'action': 'wait_and_click', 'locator': locators_data['continue_choose_menu']},
+        {'action': 'wait_and_click', 'locator': locators_data['confirm_choose_menu']},
+        {'action': 'wait_and_click', 'locator': locators_data['done_button_choose_menu']},
         {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
-        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['amount_field'], 'text': '123456'},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
+        {'action': 'wait_and_click', 'locator': locators_data['acc_button']},
         {'action': 'wait_and_click', 'locator': locators_data['tree_dot']},
         {'action': 'wait_and_click', 'locator': locators_data['copy_button']},
         {'action': 'wait_and_click', 'locator': locators_data['card_button']},
