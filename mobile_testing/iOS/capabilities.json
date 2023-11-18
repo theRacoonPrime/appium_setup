@@ -1,0 +1,10 @@
+{
+    "automationName": "xcuitest",
+    "platformName": "iOS",
+    "udid": "00008110-001865A91411401E",
+    "deviceName": "IPHONE",
+    "app": "/Users/andrey/Downloads/yettel-bank 2.ipa",
+    "autoGrantPermissions": true
+}
+
+
