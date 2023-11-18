@@ -144,7 +144,17 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['exit_balance_info']},
         {'action': 'wait_and_click', 'locator': locators_data['account_info_button']},
         {'action': 'wait_and_click', 'locator': locators_data['exit_accinfo_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['standing_order']},
+        # Standing order
+        {'action': 'wait_and_click', 'locator': locators_data['standing_order_chose']},
+        {'action': 'wait_and_click', 'locator': locators_data['acc_from_standing_order']},
+        {'action': 'wait_and_click', 'locator': locators_data['exit_from_acc_standing']},
+        {'action': 'wait_and_click', 'locator': locators_data['standing_order_to_acc_chose']},
+        {'action': 'wait_and_click', 'locator': locators_data['acc_to_standing_order']},
+        {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
+        {'action': 'wait_and_click', 'locator': locators_data['acc_to_standing_order']},
+        {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
+        {'action': 'wait_and_click', 'locator': locators_data['amount_field_standing_order']},
+        {'action': 'wait_and_click', 'locator': locators_data['standing_order_nickname_filed']},
         {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
     ]
 
