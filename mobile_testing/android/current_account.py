@@ -111,11 +111,17 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['accept_button']},
         {'action': 'wait_and_click', 'locator': locators_data['acc_button']},
         {'action': 'wait_and_click', 'locator': locators_data['new_payment']},
-        {'action': 'wait_and_click', 'locator': locators_data['choose_acc']},
-        {'action': 'wait_and_click', 'locator': locators_data['current_acc_choose']},
+        # New payment was clicked
+        # Choose acc from button
+        {'action': 'wait_and_click', 'locator': locators_data['choose_acc_from']},
+        {'action': 'wait_and_click', 'locator': locators_data['current_acc_rsd']},
+        {'action': 'wait_and_click', 'locator': locators_data['exit_choose_acc']},
         {'action': 'wait_and_click', 'locator': locators_data['choose_acc_to_menu']},
+        # Choose acc TO button
         {'action': 'wait_and_click', 'locator': locators_data['saving_acc_menu_to']},
-        # {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
+        {'action': 'wait_and_click', 'locator': locators_data['saving_acc_choose_menu']},
+        {'action': 'wait_and_click', 'locator': locators_data['exit_choose_acc']},
+        # # {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
         {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['amount_field'], 'text': '123'},
         {'action': 'wait_and_click', 'locator': locators_data['data_choose_menu']},
         {'action': 'wait_and_click', 'locator': locators_data['quarterly_choose_menu']},
