@@ -116,12 +116,9 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         # Choose acc from button
         {'action': 'wait_and_click', 'locator': locators_data['choose_acc_from']},
         {'action': 'wait_and_click', 'locator': locators_data['current_acc_rsd']},
-
-        # {'action': 'wait_and_click', 'locator': locators_data['exit_choose_acc']},
         # Choose acc TO button
         {'action': 'wait_and_click', 'locator': locators_data['choose_acc_to_menu']},
         {'action': 'wait_and_click', 'locator': locators_data['saving_acc_choose_menu']},
-        # {'action': 'wait_and_click', 'locator': locators_data['exit_choose_acc']},
         {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['amount_field'], 'text': '123'},
         {'action': 'wait_and_click', 'locator': locators_data['data_choose_menu']},
         {'action': 'wait_and_click', 'locator': locators_data['quarterly_choose_menu']},
@@ -161,5 +158,4 @@ def test_account(driver, perform_actions_with_wait, load_locators):
     ]
 
     perform_actions_with_wait(actions)
-
 
