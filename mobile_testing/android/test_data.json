@@ -48,10 +48,11 @@
   "confirm_choose_menu": "//android.widget.Button[@content-desc=\"Confirm\"]",
   "done_button_choose_menu": "//android.widget.Button[@content-desc=\"Done\"]",
   "standing_order_chose": "//android.view.View[@content-desc=\"Standing order\"]",
-  "acc_from_standing_order": "//android.view.View[@content-desc=\"Current account 5\n00210102213\n1.200,00\nRSD\"]",
+  "acc_from_standing_order": "//android.view.View[@content-desc=\"Current account 3\n00210102211\n2.060,00\nRSD\"]",
+  "acc_from_standing_order_chose": "//android.view.View[@content-desc=\"Current account 5\n00210102213\n1.200,00\nRSD\"]",
   "exit_from_acc_standing": "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[1]",
-  "standing_order_to_acc_chose": "//android.view.View[@content-desc=\"ten s kartou\n00210102101\n200,00\nRSD\"]",
-  "acc_to_standing_order": "//android.view.View[@content-desc=\"Current account 5\n00210102213\n1.200,00\nRSD\"]",
+  "standing_order_from_acc_chose": "//android.view.View[@content-desc=\"ten s kartou\n00210102101\n200,00\nRSD\"]",
+  "acc_from_standing_order_choose": "//android.view.View[@content-desc=\"Saving account 1\nMB122333\n700,00\nRSD\"]",
   "amount_field_standing_order": "//android.widget.EditText",
   "standing_order_nickname_filed": "//android.widget.ScrollView/android.widget.EditText[2]"
 }

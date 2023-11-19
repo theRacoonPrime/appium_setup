@@ -59,10 +59,10 @@ def enter_text_and_hide_keyboard(driver, locator, text):
 # Swipe action
 def swipe(driver):
     # Define swipe coordinates (adjust as needed)
-    start_x = 150
+    start_x = 250
     start_y = 400
-    end_x = 150
-    end_y = 200
+    end_x = 70
+    end_y = 100
     duration = 1000  # Duration in milliseconds
 
     # Perform the swipe action
@@ -97,6 +97,7 @@ def test_account(driver, perform_actions_with_wait, load_locators):
     driver.implicitly_wait(20)
 
     actions = [
+        # Login to the app with password input
         {'action': 'wait_and_click', 'locator': locators_data['already_have_account']},
         {'action': 'wait_and_click', 'locator': locators_data['continue_button']},
         {'action': 'wait_and_click', 'locator': locators_data['continue_button']},
@@ -147,14 +148,15 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         # Standing order
         {'action': 'wait_and_click', 'locator': locators_data['standing_order_chose']},
         {'action': 'wait_and_click', 'locator': locators_data['acc_from_standing_order']},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_from_acc_standing']},
-        {'action': 'wait_and_click', 'locator': locators_data['standing_order_to_acc_chose']},
-        {'action': 'wait_and_click', 'locator': locators_data['acc_to_standing_order']},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['acc_to_standing_order']},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['amount_field_standing_order']},
-        {'action': 'wait_and_click', 'locator': locators_data['standing_order_nickname_filed']},
+        {'action': 'wait_and_click', 'locator': locators_data['acc_from_standing_order_chose']},
+        {'action': 'wait_and_click', 'locator': locators_data['standing_order_from_acc_chose']},
+        {'action': 'wait_and_click', 'locator': locators_data['acc_from_standing_order_choose']},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['amount_field_standing_order'], 'text': '123'},
+        {'action': 'swipe'},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['standing_order_nickname_filed'],
+         'text': 'blabla'},
+        {'action': 'wait_and_click', 'locator': locators_data['continue_choose_menu']},
+        {'action': 'wait_and_click', 'locator': locators_data['confirm_choose_menu']},
         {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
     ]
 
