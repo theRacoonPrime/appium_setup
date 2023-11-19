@@ -12,7 +12,7 @@ from appium.webdriver.common.touch_action import TouchAction
 # Load locators from JSON file
 @pytest.fixture
 def load_locators():
-    with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/test_data.json') as f:
+    with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/card_and_stikcers_data.json') as f:
         return json.load(f)
 
 
@@ -109,6 +109,7 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['go_to_app_button']},
         {'action': 'wait_and_click', 'locator': locators_data['password_field_general']},
         {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['password_field_general'], 'text': '123456'},
+        {'action': 'wait_and_click', 'locator': locators_data['accept_button']},
         # Choose acc TO button
 
 
