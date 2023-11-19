@@ -108,9 +108,13 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['device_name']},
         {'action': 'wait_and_click', 'locator': locators_data['go_to_app_button']},
         {'action': 'wait_and_click', 'locator': locators_data['password_field_general']},
-        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['password_field_general'], 'text': '123456'},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['password_field_general'],'text': '123456'},
         {'action': 'wait_and_click', 'locator': locators_data['accept_button']},
         # Choose acc TO button
+        {'action': 'wait_and_click', 'locator': locators_data['show_more']},
+        {'action': 'wait_and_click', 'locator': locators_data['acc_button']},
+        {'action': 'wait_and_click', 'locator': locators_data['tree_dot']},
+        {'action': 'wait_and_click', 'locator': locators_data['card_button']},
 
 
 
