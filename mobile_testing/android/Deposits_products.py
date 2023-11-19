@@ -59,10 +59,10 @@ def enter_text_and_hide_keyboard(driver, locator, text):
 # Swipe action
 def swipe(driver):
     # Define swipe coordinates (adjust as needed)
-    start_x = 150
+    start_x = 250
     start_y = 400
-    end_x = 150
-    end_y = 200
+    end_x = 70
+    end_y = 100
     duration = 1000  # Duration in milliseconds
 
     # Perform the swipe action
@@ -97,6 +97,7 @@ def test_account(driver, perform_actions_with_wait, load_locators):
     driver.implicitly_wait(20)
 
     actions = [
+        # Login to the app with password input
         {'action': 'wait_and_click', 'locator': locators_data['already_have_account']},
         {'action': 'wait_and_click', 'locator': locators_data['continue_button']},
         {'action': 'wait_and_click', 'locator': locators_data['continue_button']},
@@ -111,11 +112,13 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['accept_button']},
         {'action': 'wait_and_click', 'locator': locators_data['acc_button']},
         {'action': 'wait_and_click', 'locator': locators_data['new_payment']},
-        {'action': 'wait_and_click', 'locator': locators_data['choose_acc']},
-        {'action': 'wait_and_click', 'locator': locators_data['current_acc_choose']},
+        # New payment was clicked
+        # Choose acc from button
+        {'action': 'wait_and_click', 'locator': locators_data['choose_acc_from']},
+        {'action': 'wait_and_click', 'locator': locators_data['current_acc_rsd']},
+        # Choose acc TO button
         {'action': 'wait_and_click', 'locator': locators_data['choose_acc_to_menu']},
-        {'action': 'wait_and_click', 'locator': locators_data['saving_acc_menu_to']},
-        # {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
+        {'action': 'wait_and_click', 'locator': locators_data['saving_acc_choose_menu']},
         {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['amount_field'], 'text': '123'},
         {'action': 'wait_and_click', 'locator': locators_data['data_choose_menu']},
         {'action': 'wait_and_click', 'locator': locators_data['quarterly_choose_menu']},
@@ -139,7 +142,18 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['exit_balance_info']},
         {'action': 'wait_and_click', 'locator': locators_data['account_info_button']},
         {'action': 'wait_and_click', 'locator': locators_data['exit_accinfo_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['standing_order']},
+        # Standing order
+        {'action': 'wait_and_click', 'locator': locators_data['standing_order_chose']},
+        {'action': 'wait_and_click', 'locator': locators_data['acc_from_standing_order']},
+        {'action': 'wait_and_click', 'locator': locators_data['acc_from_standing_order_chose']},
+        {'action': 'wait_and_click', 'locator': locators_data['standing_order_from_acc_chose']},
+        {'action': 'wait_and_click', 'locator': locators_data['acc_from_standing_order_choose']},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['amount_field_standing_order'], 'text': '123'},
+        {'action': 'swipe'},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['standing_order_nickname_filed'],
+         'text': 'blabla'},
+        {'action': 'wait_and_click', 'locator': locators_data['continue_choose_menu']},
+        {'action': 'wait_and_click', 'locator': locators_data['confirm_choose_menu']},
         {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
     ]
 
