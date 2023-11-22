@@ -61,8 +61,8 @@ def swipe(driver):
     # Define swipe coordinates (adjust as needed)
     start_x = 250
     start_y = 400
-    end_x = 70
-    end_y = 100
+    end_x = 50
+    end_y = 80
     duration = 1000  # Duration in milliseconds
 
     # Perform the swipe action
@@ -116,7 +116,7 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         # Choose acc from button
         {'action': 'wait_and_click', 'locator': locators_data['choose_acc_from']},
         {'action': 'wait_and_click', 'locator': locators_data['current_acc_rsd']},
-        # Choose acc TO button
+        # # Choose acc TO button
         {'action': 'wait_and_click', 'locator': locators_data['choose_acc_to_menu']},
         {'action': 'wait_and_click', 'locator': locators_data['saving_acc_choose_menu']},
         {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['amount_field'], 'text': '123'},

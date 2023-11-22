@@ -11,5 +11,11 @@
   "show_more": "//android.widget.Button[@content-desc=\"Show more\"]",
   "acc_button": "//android.view.View[@content-desc=\"ten s kartou\n200,00\nRSD\"]",
   "tree_dot": "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[2]",
+  "card_button": "//android.widget.Button[@content-desc=\"Cards\"]",
+  "card_button": "//android.widget.Button[@content-desc=\"Cards\"]",
+  "card_button": "//android.widget.Button[@content-desc=\"Cards\"]",
+  "card_button": "//android.widget.Button[@content-desc=\"Cards\"]",
+  "card_button": "//android.widget.Button[@content-desc=\"Cards\"]",
+  "card_button": "//android.widget.Button[@content-desc=\"Cards\"]",
   "card_button": "//android.widget.Button[@content-desc=\"Cards\"]"
 }
