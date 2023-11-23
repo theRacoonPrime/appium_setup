@@ -114,7 +114,13 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['show_more']},
         {'action': 'wait_and_click', 'locator': locators_data['acc_button']},
         {'action': 'wait_and_click', 'locator': locators_data['tree_dot']},
-        {'action': 'wait_and_click', 'locator': locators_data['card_button']},
+        {'action': 'wait_and_click', 'locator': locators_data['card_image']},
+        {'action': 'wait_and_click', 'locator': locators_data['card_button_1']},
+        {'action': 'swipe'},
+        {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
+        {'action': 'wait_and_click', 'locator': locators_data['card_button_2']},
+        {'action': 'swipe'},
+        {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
 
 
 
