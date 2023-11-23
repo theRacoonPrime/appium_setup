@@ -121,9 +121,20 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['card_button_2']},
         {'action': 'swipe'},
         {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
-
-
-
+        {'action': 'wait_and_click', 'locator': locators_data['card_button_3']},
+        {'action': 'swipe'},
+        {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
+        {'action': 'wait_and_click', 'locator': locators_data['card_button_4']},
+        {'action': 'swipe'},
+        {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
+        {'action': 'swipe'},
+        {'action': 'wait_and_click', 'locator': locators_data['card_button_5']},
+        {'action': 'swipe'},
+        {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
+        {'action': 'swipe'},
+        {'action': 'wait_and_click', 'locator': locators_data['card_button_6']},
+        {'action': 'swipe'},
+        {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
     ]
 
     perform_actions_with_wait(actions)
