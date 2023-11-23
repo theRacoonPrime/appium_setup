@@ -59,9 +59,9 @@ def enter_text_and_hide_keyboard(driver, locator, text):
 # Swipe action
 def swipe(driver):
     # Define swipe coordinates (adjust as needed)
-    start_x = 250
-    start_y = 400
-    end_x = 70
+    start_x = 300
+    start_y = 500
+    end_x = 100
     end_y = 100
     duration = 1000  # Duration in milliseconds
 
