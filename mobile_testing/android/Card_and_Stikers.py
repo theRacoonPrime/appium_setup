@@ -6,7 +6,6 @@ from time import sleep
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support import expected_conditions as EC
-from appium.webdriver.common.touch_action import TouchAction
 
 
 # Load locators from JSON file
