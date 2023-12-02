@@ -12,19 +12,6 @@ from test_helper import( wait_and_click, appium_server_url, wait_for_element,
                          load_locators_card, load_locators)
 
 
-# Desired capabilities to specify the Android device and app details
-@pytest.fixture
-def appium_capabilities():
-    # Load appium_capabilities from JSON file
-    with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/capabilities.json') as f:
-        capabilities = json.load(f)
-
-    # Configure appium_capabilities using UiAutomator2Options
-    capabilities = UiAutomator2Options().load_capabilities(capabilities)
-
-    return capabilities
-
-
 # Test using the fixtures
 def test_account(driver, perform_actions_with_wait, load_locators, load_locators_card):
     locators_data = load_locators   # Use it as a fixture, not a function
