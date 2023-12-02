@@ -3,11 +3,13 @@ import pytest
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from time import sleep
+from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support import expected_conditions as EC
-from test_helper import appium_server_url
+from test_helper import appium_server_url, wait_for_element
 from test_helper import load_locators
+from test_helper import wait_and_click
 
 
 # Desired capabilities to specify the Android device and app details
@@ -23,18 +25,23 @@ def appium_capabilities():
     return capabilities
 
 
+# def moveto(self) -> None:
+#     el1 = self.driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value='Content')
+#     el2 = self.driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value='Animation')
+#
+#     action = TouchAction(self.driver)
+#     action.press(el1).move_to(el2).release().perform()
+#
+#     el = wait_for_element(self.driver, AppiumBy.ACCESSIBILITY_ID, 'Views')
+#     assert el is not None
+
+
 @pytest.fixture
 def driver(appium_capabilities, appium_server_url):
     driver = webdriver.Remote(appium_server_url, options=appium_capabilities)
     yield driver
     if driver:
         driver.quit()
-
-
-# Common actions
-def wait_and_click(driver, locator):
-    element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, locator)))
-    element.click()
 
 
 def enter_text_and_hide_keyboard(driver, locator, text):
@@ -112,6 +119,7 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['card_button_3']},
         {'action': 'swipe'},
         {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
+        {'action': 'swipe'},
         {'action': 'wait_and_click', 'locator': locators_data['card_button_4']},
         {'action': 'swipe'},
         {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},

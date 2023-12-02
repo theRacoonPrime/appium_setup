@@ -5,6 +5,7 @@ from time import sleep
 from typing import TYPE_CHECKING, Any, Callable
 import json
 import pytest
+from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -17,6 +18,11 @@ if TYPE_CHECKING:
 @pytest.fixture
 def appium_server_url():
     return 'http://localhost:4723/wd/hub'
+
+
+def wait_and_click(driver, locator):
+    element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, locator)))
+    element.click()
 
 
 @pytest.fixture
