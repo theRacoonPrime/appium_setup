@@ -5,10 +5,12 @@ from time import sleep
 from typing import TYPE_CHECKING, Any, Callable
 import json
 import pytest
+from appium.options.android import UiAutomator2Options
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from appium import webdriver
+from appium.webdriver.common.touch_action import TouchAction
 
 if TYPE_CHECKING:
     from appium.webdriver.webdriver import WebDriver
@@ -61,6 +63,25 @@ def load_locators():
         return json.load(f)
 
 
+# Load locators from JSON file
+@pytest.fixture
+def load_locators():
+    with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/test_data.json') as f:
+        return json.load(f)
+
+
+@pytest.fixture
+def appium_capabilities():
+    # Load appium_capabilities from JSON file
+    with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/capabilities.json') as f:
+        capabilities = json.load(f)
+
+    # Configure appium_capabilities using UiAutomator2Options
+    capabilities = UiAutomator2Options().load_capabilities(capabilities)
+
+    return capabilities
+
+
 @pytest.fixture
 def driver(appium_capabilities, appium_server_url):
     driver = webdriver.Remote(appium_server_url, options=appium_capabilities)
@@ -69,21 +90,17 @@ def driver(appium_capabilities, appium_server_url):
         driver.quit()
 
 
+# Swipe action
 def swipe(driver):
     # Define swipe coordinates (adjust as needed)
-    start_x = 300
-    start_y = 500
-    end_x = 100
-    end_y = 100
+    start_x = 250
+    start_y = 400
+    end_x = 50
+    end_y = 80
     duration = 1000  # Duration in milliseconds
 
     # Perform the swipe action
     driver.swipe(start_x, start_y, end_x, end_y, duration)
-
-
-
-class NoAvailablePortError(Exception):
-    pass
 
 
 def get_available_from_port_range(from_port: int, to_port: int) -> int:
