@@ -7,9 +7,8 @@ from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support import expected_conditions as EC
-from test_helper import appium_server_url, wait_for_element
-from test_helper import load_locators
-from test_helper import wait_and_click
+from test_helper import( wait_and_click, appium_server_url, wait_for_element, load_locators,
+                         swipe, driver, enter_text_and_hide_keyboard)
 
 
 # Desired capabilities to specify the Android device and app details
@@ -23,45 +22,6 @@ def appium_capabilities():
     capabilities = UiAutomator2Options().load_capabilities(capabilities)
 
     return capabilities
-
-
-# def moveto(self) -> None:
-#     el1 = self.driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value='Content')
-#     el2 = self.driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value='Animation')
-#
-#     action = TouchAction(self.driver)
-#     action.press(el1).move_to(el2).release().perform()
-#
-#     el = wait_for_element(self.driver, AppiumBy.ACCESSIBILITY_ID, 'Views')
-#     assert el is not None
-
-
-@pytest.fixture
-def driver(appium_capabilities, appium_server_url):
-    driver = webdriver.Remote(appium_server_url, options=appium_capabilities)
-    yield driver
-    if driver:
-        driver.quit()
-
-
-def enter_text_and_hide_keyboard(driver, locator, text):
-    element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, locator)))
-    element.click()
-    element.send_keys(text)
-    driver.hide_keyboard()
-
-
-# Swipe action
-def swipe(driver):
-    # Define swipe coordinates (adjust as needed)
-    start_x = 300
-    start_y = 500
-    end_x = 100
-    end_y = 100
-    duration = 1000  # Duration in milliseconds
-
-    # Perform the swipe action
-    driver.swipe(start_x, start_y, end_x, end_y, duration)
 
 
 # Fixture for perform_actions_with_wait
@@ -89,7 +49,7 @@ def perform_actions_with_wait(driver):
 # Test using the fixtures
 def test_account(driver, perform_actions_with_wait, load_locators):
     locators_data = load_locators  # Use it as a fixture, not a function
-    driver.implicitly_wait(20)
+    driver.implicitly_wait(10)
 
     actions = [
         # Login to the app with password input
@@ -119,17 +79,11 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['card_button_3']},
         {'action': 'swipe'},
         {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
-        {'action': 'swipe'},
         {'action': 'wait_and_click', 'locator': locators_data['card_button_4']},
-        {'action': 'swipe'},
         {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
-        {'action': 'swipe'},
         {'action': 'wait_and_click', 'locator': locators_data['card_button_5']},
-        {'action': 'swipe'},
         {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
-        {'action': 'swipe'},
         {'action': 'wait_and_click', 'locator': locators_data['card_button_6']},
-        {'action': 'swipe'},
         {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
     ]
 
