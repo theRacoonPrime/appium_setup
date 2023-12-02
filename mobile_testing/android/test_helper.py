@@ -3,13 +3,26 @@ import socket
 import time
 from time import sleep
 from typing import TYPE_CHECKING, Any, Callable
-
+import json
+import pytest
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 if TYPE_CHECKING:
     from appium.webdriver.webdriver import WebDriver
     from appium.webdriver.webelement import WebElement
+
+
+# Appium server url
+@pytest.fixture
+def appium_server_url():
+    return 'http://localhost:4723/wd/hub'
+
+
+@pytest.fixture
+def load_locators():
+    with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/card_and_stikcers_data.json') as f:
+        return json.load(f)
 
 
 class NoAvailablePortError(Exception):

@@ -6,13 +6,8 @@ from time import sleep
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support import expected_conditions as EC
-
-
-# Load locators from JSON file
-@pytest.fixture
-def load_locators():
-    with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/card_and_stikcers_data.json') as f:
-        return json.load(f)
+from test_helper import appium_server_url
+from test_helper import load_locators
 
 
 # Desired capabilities to specify the Android device and app details
@@ -26,12 +21,6 @@ def appium_capabilities():
     capabilities = UiAutomator2Options().load_capabilities(capabilities)
 
     return capabilities
-
-
-# Appium server url
-@pytest.fixture
-def appium_server_url():
-    return 'http://localhost:4723/wd/hub'
 
 
 @pytest.fixture

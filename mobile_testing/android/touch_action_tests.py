@@ -70,6 +70,7 @@ def swipe(driver):
     # Perform the swipe action
     driver.swipe(start_x, start_y, end_x, end_y, duration)
 
+
 def test_tap(self) -> None:
     el = self.driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value='Animation')
     action = TouchAction(self.driver)
