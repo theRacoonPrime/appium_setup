@@ -7,88 +7,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support import expected_conditions as EC
 from appium.webdriver.common.touch_action import TouchAction
-
-
-# Load locators from JSON file
-@pytest.fixture
-def load_locators():
-    with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/test_data.json') as f:
-        return json.load(f)
-
-
-# Desired capabilities to specify the Android device and app details
-@pytest.fixture
-def appium_capabilities():
-    # Load appium_capabilities from JSON file
-    with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/capabilities.json') as f:
-        capabilities = json.load(f)
-
-    # Configure appium_capabilities using UiAutomator2Options
-    capabilities = UiAutomator2Options().load_capabilities(capabilities)
-
-    return capabilities
-
-
-# Appium server url
-@pytest.fixture
-def appium_server_url():
-    return 'http://localhost:4723/wd/hub'
-
-
-@pytest.fixture
-def driver(appium_capabilities, appium_server_url):
-    driver = webdriver.Remote(appium_server_url, options=appium_capabilities)
-    yield driver
-    if driver:
-        driver.quit()
-
-
-# Common actions
-def wait_and_click(driver, locator):
-    element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, locator)))
-    element.click()
-
-
-def enter_text_and_hide_keyboard(driver, locator, text):
-    element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, locator)))
-    element.click()
-    element.send_keys(text)
-    driver.hide_keyboard()
-
-
-# Swipe action
-def swipe(driver):
-    # Define swipe coordinates (adjust as needed)
-    start_x = 250
-    start_y = 400
-    end_x = 50
-    end_y = 80
-    duration = 1000  # Duration in milliseconds
-
-    # Perform the swipe action
-    driver.swipe(start_x, start_y, end_x, end_y, duration)
-
-
-# Fixture for perform_actions_with_wait
-@pytest.fixture
-def perform_actions_with_wait(driver):
-    def perform_actions(actions):
-        for action in actions:
-            action_type = action.get('action')
-            locator = action.get('locator')
-            text = action.get('text')
-
-            if action_type == 'wait_and_click':
-                wait_and_click(driver, locator)
-            elif action_type == 'enter_text_and_hide_keyboard':
-                enter_text_and_hide_keyboard(driver, locator, text)
-            elif action_type == 'swipe':
-                swipe(driver)
-
-            # Add sleep or wait conditions as needed between actions
-            sleep(1)
-
-    return perform_actions
+from test_helper import( wait_and_click, appium_server_url,
+                         wait_for_element,
+                         swipe, driver, enter_text_and_hide_keyboard,
+                         perform_actions_with_wait,
+                         appium_capabilities,
+                         load_locators_card, load_locators)
 
 
 # Test using the fixtures
