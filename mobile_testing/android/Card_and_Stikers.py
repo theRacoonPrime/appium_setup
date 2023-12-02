@@ -7,8 +7,9 @@ from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support import expected_conditions as EC
-from test_helper import( wait_and_click, appium_server_url, wait_for_element, load_locators,
-                         swipe, driver, enter_text_and_hide_keyboard, perform_actions_with_wait)
+from test_helper import( wait_and_click, appium_server_url, wait_for_element,
+                         swipe, driver, enter_text_and_hide_keyboard, perform_actions_with_wait, appium_capabilities,
+                         load_locators_card, load_locators)
 
 
 # Desired capabilities to specify the Android device and app details
@@ -25,9 +26,10 @@ def appium_capabilities():
 
 
 # Test using the fixtures
-def test_account(driver, perform_actions_with_wait, load_locators):
-    locators_data = load_locators  # Use it as a fixture, not a function
-    driver.implicitly_wait(10)
+def test_account(driver, perform_actions_with_wait, load_locators, load_locators_card):
+    locators_data = load_locators   # Use it as a fixture, not a function
+    locators_data_load = load_locators_card
+    driver.implicitly_wait(20)
 
     actions = [
         # Login to the app with password input
@@ -45,24 +47,24 @@ def test_account(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['accept_button']},
         # Choose acc TO button
         {'action': 'wait_and_click', 'locator': locators_data['show_more']},
-        {'action': 'wait_and_click', 'locator': locators_data['acc_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['tree_dot']},
-        {'action': 'wait_and_click', 'locator': locators_data['card_image']},
-        {'action': 'wait_and_click', 'locator': locators_data['card_button_1']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['acc_button']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['tree_dot']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['card_image']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['card_button_1']},
         {'action': 'swipe'},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
-        {'action': 'wait_and_click', 'locator': locators_data['card_button_2']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['exit_from_card']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['card_button_2']},
         {'action': 'swipe'},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
-        {'action': 'wait_and_click', 'locator': locators_data['card_button_3']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['exit_from_card']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['card_button_3']},
         {'action': 'swipe'},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
-        {'action': 'wait_and_click', 'locator': locators_data['card_button_4']},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
-        {'action': 'wait_and_click', 'locator': locators_data['card_button_5']},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
-        {'action': 'wait_and_click', 'locator': locators_data['card_button_6']},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_from_card']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['exit_from_card']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['card_button_4']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['exit_from_card']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['card_button_5']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['exit_from_card']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['card_button_6']},
+        {'action': 'wait_and_click', 'locator': locators_data_load['exit_from_card']},
     ]
 
     perform_actions_with_wait(actions)

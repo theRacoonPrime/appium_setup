@@ -58,7 +58,7 @@ def wait_and_click(driver, locator):
 
 
 @pytest.fixture
-def load_locators():
+def load_locators_card():
     with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/card_and_stikcers_data.json') as f:
         return json.load(f)
 
