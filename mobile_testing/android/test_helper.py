@@ -22,6 +22,28 @@ def enter_text_and_hide_keyboard(driver, locator, text):
     driver.hide_keyboard()
 
 
+# Fixture for perform_actions_with_wait
+@pytest.fixture
+def perform_actions_with_wait(driver):
+    def perform_actions(actions):
+        for action in actions:
+            action_type = action.get('action')
+            locator = action.get('locator')
+            text = action.get('text')
+
+            if action_type == 'wait_and_click':
+                wait_and_click(driver, locator)
+            elif action_type == 'enter_text_and_hide_keyboard':
+                enter_text_and_hide_keyboard(driver, locator, text)
+            elif action_type == 'swipe':
+                swipe(driver)
+
+            # Add sleep or wait conditions as needed between actions
+            sleep(1)
+
+    return perform_actions
+
+
 # Appium server url
 @pytest.fixture
 def appium_server_url():
