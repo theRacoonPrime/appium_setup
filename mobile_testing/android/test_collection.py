@@ -19,6 +19,19 @@ def setup_teardown():
     yield
 
 
-def test_scenario_1(setup_teardown):
+@pytest.mark.run(order=1)
+def test_scenario_1():
     # Test scenario 1 implementation
+    assert True
+
+
+@pytest.mark.run(order=2)
+def test_scenario_2():
+    # Test scenario 2 implementation
+    assert True
+
+
+@pytest.mark.run(order=3)
+def test_scenario_3():
+    # Test scenario 3 implementation
     assert True
