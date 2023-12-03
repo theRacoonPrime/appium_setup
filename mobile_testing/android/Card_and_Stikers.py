@@ -13,7 +13,7 @@ from test_helper import( wait_and_click, appium_server_url, wait_for_element,
 
 
 # Test using the fixtures
-def test_account(driver, perform_actions_with_wait, load_locators, load_locators_card):
+def test_cards(driver, perform_actions_with_wait, load_locators, load_locators_card):
     locators_data = load_locators   # Use it as a fixture, not a function
     locators_data_load = load_locators_card
     driver.implicitly_wait(20)
