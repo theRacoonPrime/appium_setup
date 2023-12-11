@@ -6,6 +6,8 @@ from Card_and_Stikers import test_cards
 from login import test_login, negative_test_login
 from account_test import payment
 from current_account import current_account
+from main_menu import test_main_menu
+from activefilters_test import test_activities_filters
 
 
 @pytest.mark.run(order=1)
@@ -17,16 +19,27 @@ def test_scenario_1(test_login):
 def test_scenario_2(negative_test_login):
     assert True
 
-@pytest.mark.run(order=2)
-def test_scenario_2(test_login, test_cards, test_cards_negative):
-    assert True
-
 
 @pytest.mark.run(order=3)
-def test_scenario_3(test_login, payment):
+def test_scenario_3(test_login, test_cards):
     assert True
 
 
 @pytest.mark.run(order=4)
-def test_scenario_4(test_login, current_account):
+def test_scenario_4(test_login, test_main_menu):
+    assert True
+
+
+@pytest.mark.run(order=5)
+def test_scenario_5(test_login, test_activities_filters):
+    assert True
+
+
+@pytest.mark.run(order=6)
+def test_scenario_6(test_login, current_account):
+    assert True
+
+
+@pytest.mark.run(order=7)
+def test_scenario_7(test_login, current_account):
     assert True
