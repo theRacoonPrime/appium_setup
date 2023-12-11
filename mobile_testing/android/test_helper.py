@@ -17,6 +17,11 @@ if TYPE_CHECKING:
     from appium.webdriver.webelement import WebElement
 
 
+def wait_fun(driver, locator):
+    element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable(locator))
+    element.click()
+
+
 def enter_text_and_hide_keyboard(driver, locator, text):
     element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((AppiumBy.XPATH, locator)))
     element.click()

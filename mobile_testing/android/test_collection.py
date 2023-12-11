@@ -5,6 +5,7 @@ from test_helper import( wait_and_click, appium_server_url, wait_for_element,
 from Card_and_Stikers import test_cards
 from login import test_login
 from account_test import payment
+from current_account import current_account
 
 
 @pytest.mark.run(order=1)
@@ -21,3 +22,7 @@ def test_scenario_2(test_login, test_cards):
 def test_scenario_3(test_login, payment):
     assert True
 
+
+@pytest.mark.run(order=4)
+def test_scenario_4(test_login, current_account):
+    assert True
