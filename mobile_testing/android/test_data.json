@@ -56,5 +56,16 @@
   "acc_from_standing_order_choose": "//android.view.View[@content-desc=\"Saving account 1\nMB122333\n700,00\nRSD\"]",
   "amount_field_standing_order": "//android.widget.EditText",
   "standing_order_nickname_filed": "//android.widget.ScrollView/android.widget.EditText[2]",
+  "current_acc_1": "//android.view.View[@content-desc=\"Current account 000\n1.200,00\nRSD\"]",
+  "current_acc_2": "//android.view.View[@content-desc=\"Current account 999\n800,00\nRSD\"]",
+  "current_acc_3": "//android.view.View[@content-desc=\"Current account ppfhdhdhdgsgshshshshsgdydgdhdhhdhdfh he hdydhddhdhdhhdhddhfhfhfhfhfhfhhfhdfhfhfhfhfhfhfhhfhffhf hdydhddhdhdhhdhddhfhfhfhfhfhfhhfhdfhfhfhfhfhfhfhhfhffhf hdydhddhdhdhhdhddhfhfhfhfhfhfhhfhdfhfhfhfhfhfhfhhfhffhfhdydhddhdhdhhdhddhfhfhfhfhfhfhhfhdfhfhfhfhfhfhfhhfhffhfhdydhddhdhdhhdhddhfhfhfhfhfhfhhfhdfhfhfhfhfhfhfhhfhffhfhdydhddhdhdhhdhddhfhfhfhfhfhfhhfhdfhfhfhfhfhfhfhhfhffhf hdydhddhdhdhhdhddhfhfhfhfhfhfhhfhdfhfhfhfhfhfhfhhfhffhf\n2.060,00\nRSD\"]",
+  "current_acc_4": "//android.view.View[@content-desc=\"ten s kartou\n200,00\nRSD\"]",
+  "current_acc_5": "//android.view.View[@content-desc=\"Current account 6\n360,00\nEUR\"]",
+  "current_acc_6": "//android.view.View[@content-desc=\"Current account 7\n2.005,00\nEUR\"]",
+  "current_acc_7": "//android.view.View[@content-desc=\"Current account 8\n165,00\nEUR\"]",
+  "current_acc_8": "//android.view.View[@content-desc=\"Current account 10\n450,00\nUSD\"]",
+  "current_acc_9": "//android.view.View[@content-desc=\"Current account 11\n500,00\nUSD\"]",
+  "current_acc_10": "//android.view.View[@content-desc=\"Current account 9\n3.000,00\nUSD\"]",
+  "current_acc_11": "//android.view.View[@content-desc=\"acc\n200,00\nUSD\"]",
   "show_more": "//android.widget.Button[@content-desc=\"Show more\"]"
 }

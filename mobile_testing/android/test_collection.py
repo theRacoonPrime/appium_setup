@@ -17,16 +17,16 @@ def test_scenario_1(test_login):
 def test_scenario_2(negative_test_login):
     assert True
 
-# @pytest.mark.run(order=2)
-# def test_scenario_2(test_login, test_cards, test_cards_negative):
-#     assert True
-#
-#
-# @pytest.mark.run(order=3)
-# def test_scenario_3(test_login, payment):
-#     assert True
-#
-#
-# @pytest.mark.run(order=4)
-# def test_scenario_4(test_login, current_account):
-#     assert True
+@pytest.mark.run(order=2)
+def test_scenario_2(test_login, test_cards, test_cards_negative):
+    assert True
+
+
+@pytest.mark.run(order=3)
+def test_scenario_3(test_login, payment):
+    assert True
+
+
+@pytest.mark.run(order=4)
+def test_scenario_4(test_login, current_account):
+    assert True
