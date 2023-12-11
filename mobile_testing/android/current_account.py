@@ -19,7 +19,7 @@ def current_account(driver, perform_actions_with_wait, load_locators):
     driver.implicitly_wait(20)
 
     actions = [
-        {'action': 'wait_and_click', 'locator': locators_data['acc_button']},
+        {'action': 'wait_and_click', 'locator': locators_data['current_acc_1']},
         {'action': 'wait_and_click', 'locator': locators_data['tree_dot']},
         {'action': 'wait_and_click', 'locator': locators_data['copy_button']},
         {'action': 'wait_and_click', 'locator': locators_data['card_button']},
