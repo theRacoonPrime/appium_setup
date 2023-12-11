@@ -23,6 +23,7 @@
   "exit_accinfo_button": "//android.view.View[@content-desc=\"Scrim\"]",
   "exit_balance_info": "//android.view.View[@content-desc=\"Scrim\"]",
   "standing_order": "//android.view.View[@content-desc=\"Standing order\"]",
+  "device_name_input": "//android.widget.EditText",
   "device_name": "//android.widget.Button[@content-desc=\"Continue\"]",
   "exit_button": "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button",
   "current_acc_rsd": "//android.view.View[@content-desc=\"ten s kartou\n00210102101\n200,00\nRSD\"]",
