@@ -8,6 +8,7 @@ from account_test import payment
 from current_account import current_account
 from main_menu import test_main_menu
 from activefilters_test import test_activities_filters
+from card_detail_test import test_card_detail
 
 
 @pytest.mark.run(order=1)
@@ -26,17 +27,17 @@ def test_scenario_3(test_login, test_cards):
 
 
 @pytest.mark.run(order=4)
-def test_scenario_4(test_login, test_main_menu):
+def test_scenario_4(test_login, test_card_detail):
     assert True
 
 
 @pytest.mark.run(order=5)
-def test_scenario_5(test_login, test_activities_filters):
+def test_scenario_5(test_login, current_account):
     assert True
 
 
 @pytest.mark.run(order=6)
-def test_scenario_6(test_login, current_account):
+def test_scenario_6(test_login, payment):
     assert True
 
 
