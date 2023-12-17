@@ -12,6 +12,7 @@ from card_detail_test import test_card_detail
 from count_and_transactions_test import test_count_and_transaction
 from Deposits_products import test_deposits_products
 from incoming_transactions_test import test_incoming_transaction
+from Loan_products import test_loan_products
 
 
 @pytest.mark.run(order=1)
@@ -59,6 +60,12 @@ def test_scenario_9(test_login, test_deposits_products):
     assert True
 
 
-@pytest.mark.run(order=9)
+@pytest.mark.run(order=10)
 def test_scenario_9(test_login, test_incoming_transaction):
     assert True
+
+
+@pytest.mark.run(order=11)
+def test_scenario_9(test_login, test_loan_products):
+    assert True
+
