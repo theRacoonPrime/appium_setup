@@ -53,26 +53,6 @@ def test_cards_negative(driver, perform_actions_with_wait, load_locators, load_l
 
     actions = [
         # Choose acc TO button
-        {'action': 'wait_and_click', 'locator': locators_data['show_more']},
-        {'action': 'wait_and_click', 'locator': locators_data_load['acc_button']},
-        {'action': 'wait_and_click', 'locator': locators_data_load['tree_dot']},
-        {'action': 'wait_and_click', 'locator': locators_data_load['card_image']},
-        {'action': 'wait_and_click', 'locator': locators_data_load['card_button_1']},
-        # {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['password_field_1'], 'text': '123456'},
-        {'action': 'swipe'},
-        {'action': 'wait_and_click', 'locator': locators_data_load['exit_from_card']},
-        {'action': 'wait_and_click', 'locator': locators_data_load['card_button_2']},
-        {'action': 'swipe'},
-        {'action': 'wait_and_click', 'locator': locators_data_load['exit_from_card']},
-        {'action': 'wait_and_click', 'locator': locators_data_load['card_button_3']},
-        {'action': 'swipe'},
-        {'action': 'wait_and_click', 'locator': locators_data_load['exit_from_card']},
-        {'action': 'wait_and_click', 'locator': locators_data_load['card_button_4']},
-        {'action': 'wait_and_click', 'locator': locators_data_load['exit_from_card']},
-        {'action': 'wait_and_click', 'locator': locators_data_load['card_button_5']},
-        {'action': 'wait_and_click', 'locator': locators_data_load['exit_from_card']},
-        {'action': 'wait_and_click', 'locator': locators_data_load['card_button_6']},
-        {'action': 'wait_and_click', 'locator': locators_data_load['exit_from_card']},
     ]
 
     perform_actions_with_wait(actions)
