@@ -50,11 +50,6 @@ def test_scenario_7(test_login, test_count_and_transaction):
     assert True
 
 
-@pytest.mark.run(order=8)
-def test_scenario_8(test_login, test_count_and_transaction):
-    assert True
-
-
 @pytest.mark.run(order=9)
 def test_scenario_10(test_login, test_deposits_products):
     assert True
@@ -89,3 +84,12 @@ def test_scenario_15(test_login, test_cards_negative):
 def test_scenario_15(test_login, test_current_account_negative):
     assert True
 
+
+@pytest.mark.run(order=16)
+def test_scenario_16(test_login, test_current_account_negative):
+    assert True
+
+
+@pytest.mark.run(order=17)
+def test_scenario_17(test_login, test_count_and_transaction_negative):
+    assert True

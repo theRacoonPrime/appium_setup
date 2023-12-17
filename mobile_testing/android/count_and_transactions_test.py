@@ -20,21 +20,6 @@ def test_count_and_transaction(driver, perform_actions_with_wait, load_locators)
     driver.implicitly_wait(20)
 
     actions = [
-        # Login to the app with password input
-        {'action': 'wait_and_click', 'locator': locators_data['already_have_account']},
-        {'action': 'wait_and_click', 'locator': locators_data['continue_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['continue_button']},
-        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['password_field_1'], 'text': '123456'},
-        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['password_field_2'], 'text': '123456'},
-        {'action': 'wait_and_click', 'locator': locators_data['continue_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['thanks_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['device_name']},
-        {'action': 'wait_and_click', 'locator': locators_data['go_to_app_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['password_field_general']},
-        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['password_field_general'], 'text': '123456'},
-        {'action': 'wait_and_click', 'locator': locators_data['accept_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['acc_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['new_payment']},
         # New payment was clicked
         # Choose acc from button
         {'action': 'wait_and_click', 'locator': locators_data['choose_acc_from']},
@@ -81,3 +66,20 @@ def test_count_and_transaction(driver, perform_actions_with_wait, load_locators)
     ]
 
     perform_actions_with_wait(actions)
+
+
+@pytest.fixture
+def test_count_and_transaction_negative(driver, perform_actions_with_wait, load_locators):
+    locators_data = load_locators  # Use it as a fixture, not a function
+    driver.implicitly_wait(20)
+
+    actions = [
+        # New payment was clicked
+        # Choose acc from button
+
+    ]
+
+    perform_actions_with_wait(actions)
+
+
+
