@@ -121,5 +121,11 @@ def test_scenario_21(test_login, test_payments_domestic_negative):
 
 
 @pytest.mark.run(order=22)
-def test_scenario_21(test_login, test_transfer_negative):
+def test_scenario_22(test_login, test_transfer_negative):
     assert True
+
+
+@pytest.mark.run(order=23)
+def test_scenario_22(test_login, test_card_detail_negative):
+    assert True
+
