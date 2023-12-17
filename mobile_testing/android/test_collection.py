@@ -99,3 +99,8 @@ def test_scenario_16(test_login, test_count_and_transaction_negative):
 def test_scenario_17(test_login, test_deposits_products_negative):
     assert True
 
+
+@pytest.mark.run(order=18)
+def test_scenario_18(test_login, test_incoming_transaction_negative):
+    assert True
+
