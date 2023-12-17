@@ -79,3 +79,13 @@ def test_scenario_13(test_login, test_main_menu):
 def test_scenario_14(test_login, test_payments_domestic):
     assert True
 
+
+@pytest.mark.run(order=14)
+def test_scenario_15(test_login, test_cards_negative):
+    assert True
+
+
+@pytest.mark.run(order=15)
+def test_scenario_15(test_login, test_current_account_negative):
+    assert True
+
