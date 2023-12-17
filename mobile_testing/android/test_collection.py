@@ -56,20 +56,26 @@ def test_scenario_8(test_login, test_count_and_transaction):
 
 
 @pytest.mark.run(order=9)
-def test_scenario_9(test_login, test_deposits_products):
+def test_scenario_10(test_login, test_deposits_products):
     assert True
 
 
 @pytest.mark.run(order=10)
-def test_scenario_9(test_login, test_incoming_transaction):
+def test_scenario_11(test_login, test_incoming_transaction):
     assert True
 
 
 @pytest.mark.run(order=11)
-def test_scenario_9(test_login, test_loan_products):
+def test_scenario_12(test_login, test_loan_products):
     assert True
 
 
 @pytest.mark.run(order=12)
-def test_scenario_9(test_login, test_main_menu):
+def test_scenario_13(test_login, test_main_menu):
     assert True
+
+
+@pytest.mark.run(order=13)
+def test_scenario_14(test_login, test_payments_domestic):
+    assert True
+
