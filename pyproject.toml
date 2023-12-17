@@ -13,6 +13,7 @@ chromedriver-autoinstaller = "^0.6.2"
 chromedriver = "^2.24.1"
 appium-python-client = "2.9.0"
 requests = "^2.31.0"
+pytest-ordering = "^0.6"
 
 
 [build-system]
