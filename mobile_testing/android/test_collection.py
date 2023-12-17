@@ -11,6 +11,7 @@ from activefilters_test import test_activities_filters
 from card_detail_test import test_card_detail
 from count_and_transactions_test import test_count_and_transaction
 from Deposits_products import test_deposits_products
+from incoming_transactions_test import test_incoming_transaction
 
 
 @pytest.mark.run(order=1)
@@ -55,4 +56,9 @@ def test_scenario_8(test_login, test_count_and_transaction):
 
 @pytest.mark.run(order=9)
 def test_scenario_9(test_login, test_deposits_products):
+    assert True
+
+
+@pytest.mark.run(order=9)
+def test_scenario_9(test_login, test_incoming_transaction):
     assert True
