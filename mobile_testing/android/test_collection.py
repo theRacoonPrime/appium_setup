@@ -134,3 +134,15 @@ def test_scenario_23(test_login, test_card_detail_negative):
 def test_scenario_24(test_login, test_activities_filters_negative):
     assert True
 
+
+@pytest.mark.run(order=25)
+def test_scenario_25(test_login, test_list_of_accounts):
+    assert True
+
+
+@pytest.mark.run(order=25)
+def test_scenario_25(test_login, test_list_of_accounts_negative):
+    assert True
+
+
+
