@@ -17,7 +17,7 @@ Brief project description goes here.
   - [Docker](#docker)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ## Introduction
 - This is a project for testing a mobile application on iOS and Android platforms. In this project, I will be using Appium, Selenium, Poetry, and Docker.
@@ -31,7 +31,7 @@ Brief project description goes here.
 
 
 ## Setup
-
+Here I will briefly describe how to setup, Appium, Python, JDK, Docker, Selenium, Poetry  
 
 
 ### Appium
@@ -65,6 +65,5 @@ Brief project description goes here.
 ## Contributing
 
 
-## License
 
 
