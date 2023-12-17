@@ -69,3 +69,7 @@ def test_scenario_9(test_login, test_incoming_transaction):
 def test_scenario_9(test_login, test_loan_products):
     assert True
 
+
+@pytest.mark.run(order=12)
+def test_scenario_9(test_login, test_main_menu):
+    assert True

@@ -14,6 +14,7 @@ from test_helper import( wait_and_click, appium_server_url, wait_for_element,
 
 
 # Test using the fixtures
+@pytest.fixture
 def test_loan_products(driver, perform_actions_with_wait, load_locators):
     locators_data = load_locators  # Use it as a fixture, not a function
     driver.implicitly_wait(20)
