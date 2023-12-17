@@ -4,7 +4,7 @@ Brief project description goes here.
 
 ## Table of Contents
 
-- [Introduction]- This is a project for testing a mobile application on iOS and Android platforms. In this project, I will be using Appium, Selenium, Poetry, and Docker.(#introduction)
+- [Introduction](#introduction)
 - [Features](#features)
 - [Requirements](#requirements)
 - [Setup](#setup)
@@ -20,7 +20,7 @@ Brief project description goes here.
 - [License](#license)
 
 ## Introduction
-
+- This is a project for testing a mobile application on iOS and Android platforms. In this project, I will be using Appium, Selenium, Poetry, and Docker.
 
 
 ## Features
