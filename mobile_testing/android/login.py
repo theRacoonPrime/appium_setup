@@ -16,10 +16,10 @@ from test_helper import( wait_and_click, appium_server_url, wait_for_element, lo
 @pytest.fixture
 def test_login(driver, perform_actions_with_wait, load_locators):
     locators_data = load_locators  # Use it as a fixture, not a function
-    driver.implicitly_wait(20)
+    driver.implicitly_wait(15)
 
     # Add a sleep time before the test actions
-    sleep_time_before_actions = 14  # Adjust the duration as needed
+    sleep_time_before_actions = 12  # Adjust the duration as needed
     time.sleep(sleep_time_before_actions)
 
     actions = [
@@ -35,7 +35,7 @@ def test_login(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['go_to_app_button']},
         {'action': 'wait_and_click', 'locator': locators_data['password_field_general']},
         {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['password_field_general'], 'text': '123456'},
-        {'action': 'wait_and_click', 'locator': locators_data['accept_button']}
+        {'action': 'wait_and_click', 'locator': locators_data['continue_button']},
      ]
 
     perform_actions_with_wait(actions)
@@ -66,7 +66,7 @@ def negative_test_login(driver, perform_actions_with_wait, load_locators):
         {'action': 'wait_and_click', 'locator': locators_data['go_to_app_button']},
         {'action': 'wait_and_click', 'locator': locators_data['password_field_general']},
         {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['password_field_general'], 'text': 'bkdkjfg'},
-        {'action': 'wait_and_click', 'locator': locators_data['accept_button']}
+        {'action': 'wait_and_click', 'locator': locators_data['continue_button']}
      ]
 
     perform_actions_with_wait(actions)
