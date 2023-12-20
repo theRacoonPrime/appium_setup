@@ -21,7 +21,7 @@ def test_cards(driver, perform_actions_with_wait, load_locators, load_locators_c
 
     actions = [
         # Choose acc TO button
-        {'action': 'wait_and_click', 'locator': locators_data['show_more']},
+        # {'action': 'wait_and_click', 'locator': locators_data['show_more']},
         {'action': 'wait_and_click', 'locator': locators_data_load['acc_button']},
         {'action': 'wait_and_click', 'locator': locators_data_load['tree_dot']},
         {'action': 'wait_and_click', 'locator': locators_data_load['card_image']},
