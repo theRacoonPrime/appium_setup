@@ -1,6 +1,6 @@
 # appium_setup_test
 
-Brief project description goes here.
+Mobile testing project for android and iOS platforms 
 
 ## Table of Contents
 
@@ -27,7 +27,7 @@ Brief project description goes here.
 
 
 ## Setup
-Here I will briefly describe how to setup, Appium, Python, JDK, Docker, Selenium, Poetry  
+Here I will briefly describe how to setup, Appium, Python, JDK, Docker, Selenium, Poetry
 
 
 ### Appium
