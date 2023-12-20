@@ -23,10 +23,6 @@ Brief project description goes here.
 - This is a project for testing a mobile application on iOS and Android platforms. In this project, I will be using Appium, Selenium, Poetry, and Docker.
 
 
-## Features
-
-
-
 ## Requirements
 
 
