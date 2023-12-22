@@ -1,10 +1,11 @@
-version: "3.10"
-
+version: '3'
 
 services:
-  appium:
-    build: .
+  my_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "4723:4723"
-#    environment:
-#      - ANDROID_HOME=/path/to/your/android/sdk
+    environment:
+      - ANDROID_HOME=/root/Library/Android/sdk
