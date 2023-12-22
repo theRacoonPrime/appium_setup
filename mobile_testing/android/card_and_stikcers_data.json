@@ -13,7 +13,7 @@
   "acc_button": "//android.view.View[@content-desc=\"ten s kartou\n200,00\nRSD\"]",
   "tree_dot": "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]/android.widget.Button[2]",
   "card_button_1": "//android.view.View[@content-desc=\"sugon-j\nPetar Petrovic\n12** **** **** **56\n02/2030\nactive\"]",
-  "card_button_2": "//android.view.View[@content-desc=\"Gandalf\nAndrew Enterweder\n12** **** **** **56\n02/2030\nactive\"]",
+  "card_button_2": "//android.view.View[@content-desc=\"Gandalf karta\nAndrew Enterweder\n12** **** **** **56\n02/2030\nactive\"]",
   "card_button_3": "//android.widget.ImageView[@content-desc=\"Antontester\nAnton Petrovic\n12** **** **** **56 -2\n02/2028\ninactive\"]",
   "card_button_4": "//android.widget.ImageView[@content-desc=\"Anton\nAnton Petrovic\n12** **** **** **56 -3\n02/2028\npermanently blocked\"]",
   "card_button_5": "//android.widget.ImageView[@content-desc=\"Anton\nAnton Petrovic\n12** **** **** **56 -4\n02/2028\npermanently blocked\"]",
