@@ -20,9 +20,9 @@ def test_scenario_1(test_login):
     assert True
 
 
-# @pytest.mark.run(order=2)
-# def test_scenario_2(negative_test_login):
-#     assert True
+@pytest.mark.run(order=2)
+def test_scenario_2(negative_test_login):
+    assert True
 #
 #
 # @pytest.mark.run(order=3)
