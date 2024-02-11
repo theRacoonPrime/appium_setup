@@ -23,13 +23,14 @@ def test_scenario_1(test_login):
 @pytest.mark.run(order=2)
 def test_scenario_2(negative_test_login):
     assert True
-#
-#
-# @pytest.mark.run(order=3)
-# def test_scenario_3(test_login, test_cards):
-#     assert True
-#
-#
+
+
+@pytest.mark.run(order=3)
+def test_scenario_3(test_login, test_cards):
+    assert True
+
+
+
 # @pytest.mark.run(order=4)
 # def test_scenario_4(test_login, test_card_detail):
 #     assert True
