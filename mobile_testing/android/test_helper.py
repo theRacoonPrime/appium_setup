@@ -98,11 +98,11 @@ def driver(appium_capabilities, appium_server_url):
 # Swipe action
 def swipe(driver):
     # Define swipe coordinates (adjust as needed)
-    start_x = 250
-    start_y = 400
-    end_x = 50
-    end_y = 80
-    duration = 1000  # Duration in milliseconds
+    start_x = 350
+    start_y = 500
+    end_x = 20
+    end_y = 30
+    duration = 1500    # Duration in milliseconds
 
     # Perform the swipe action
     driver.swipe(start_x, start_y, end_x, end_y, duration)

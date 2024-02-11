@@ -16,35 +16,30 @@ from test_helper import( wait_and_click, appium_server_url, wait_for_element,
 @pytest.fixture
 def current_account(driver, perform_actions_with_wait, load_locators):
     locators_data = load_locators  # Use it as a fixture, not a function
-    driver.implicitly_wait(20)
+    driver.implicitly_wait(5)
 
     actions = [
-        {'action': 'wait_and_click', 'locator': locators_data['current_acc_4']},
-        {'action': 'wait_and_click', 'locator': locators_data['tree_dot']},
-        {'action': 'wait_and_click', 'locator': locators_data['copy_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['card_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_card_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['payment_limits_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_payment_limit']},
-        {'action': 'wait_and_click', 'locator': locators_data['statement_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['statement_exit_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['balance_information_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_balance_info']},
-        {'action': 'wait_and_click', 'locator': locators_data['account_info_button']},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_accinfo_button']},
-        # Standing order
-        {'action': 'wait_and_click', 'locator': locators_data['standing_order_chose']},
-        {'action': 'wait_and_click', 'locator': locators_data['acc_from_standing_order']},
-        {'action': 'wait_and_click', 'locator': locators_data['acc_from_standing_order_chose']},
-        {'action': 'wait_and_click', 'locator': locators_data['standing_order_from_acc_chose']},
-        {'action': 'wait_and_click', 'locator': locators_data['acc_from_standing_order_choose']},
-        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['amount_field_standing_order'], 'text': '123'},
+        {'action': 'wait_and_click', 'locator': load_locators['acc_button']},
+        {'action': 'wait_and_click', 'locator': load_locators['new_payment']},
+        # {'action': 'wait_and_click', 'locator': load_locators['choose_acc_from']},
+        # {'action': 'wait_and_click', 'locator': load_locators['current_acc_usd']},
+        {'action': 'wait_and_click', 'locator': load_locators['choose_acc_to_menu']},
+        # {'action': 'swipe', 'start_x': 500, 'start_y': 520, 'end_x': 560, 'end_y': 2160, 'duration': 800},
+        {'action': 'wait_and_click', 'locator': load_locators['receiver_acc']},
         {'action': 'swipe'},
-        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['standing_order_nickname_filed'],
-         'text': 'blabla'},
-        {'action': 'wait_and_click', 'locator': locators_data['continue_choose_menu']},
-        {'action': 'wait_and_click', 'locator': locators_data['confirm_choose_menu']},
-        {'action': 'wait_and_click', 'locator': locators_data['exit_button']},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['amount_field'], 'text': '12'},
+        {'action': 'swipe'},
+        # {'action': 'wait_and_click', 'locator': load_locators['model_of_payment']},
+        # {'action': 'wait_and_click', 'locator': load_locators['choose_model_of_payment']},
+        {'action': 'swipe'},
+        # {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['reference_field'], 'text': '1ddfew22'},
+        {'action': 'wait_and_click', 'locator': load_locators['continue_payment']},
+        {'action': 'swipe'},
+        {'action': 'wait_and_click', 'locator': load_locators['pay_button']},
+        {'action': 'enter_text_and_hide_keyboard', 'locator': locators_data['pin_confirm'], 'text': '123456'},
+        {'action': 'wait_and_click', 'locator': load_locators['confirm']},
+        {'action': 'wait_and_click', 'locator': load_locators['done']},
+
     ]
 
     perform_actions_with_wait(actions)

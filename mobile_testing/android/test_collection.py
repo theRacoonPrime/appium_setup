@@ -35,10 +35,12 @@ def test_scenario_3(test_login, test_cards):
 # def test_scenario_4(test_login, test_card_detail):
 #     assert True
 #
-#
-# @pytest.mark.run(order=5)
-# def test_scenario_5(test_login, current_account):
-#     assert True
+
+
+@pytest.mark.run(order=5)
+def test_scenario_5(test_login, current_account):
+    assert True
+
 
 @pytest.mark.run(order=6)
 def test_scenario_6(test_login, payment):
