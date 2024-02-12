@@ -1,0 +1,17 @@
+{
+  "chat_button": "//android.widget.Button[@content-desc=\"Chat\"]",
+  "IPS": "//android.widget.Button[@content-desc=\"IPS\"]",
+  "hamburger": "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button",
+  "Contacts": "//android.view.View[@content-desc=\"Contacts\"]",
+  "Locations": "//android.view.View[@content-desc=\"Locations\"]",
+  "Currency": "//android.view.View[@content-desc=\"Currency exchange rates\"]",
+  "About app": "//android.view.View[@content-desc=\"About app\"]",
+  "Yettel": "//android.view.View[@content-desc=\"Yettel\"]",
+  "exit_from_chat": "//android.widget.Button",
+  "ips_confirm": "//android.widget.EditText",
+  "Exit_from_contacts": "//android.widget.Button",
+  "Exit_from_Locations": "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[1]",
+  "Exit_from_AboutAPP": "//android.widget.Button",
+  "Exit_from_AboutYettel": "//android.widget.Button",
+  "": "//android.widget.Button"
+}

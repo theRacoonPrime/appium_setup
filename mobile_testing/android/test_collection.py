@@ -1,7 +1,7 @@
 import pytest
 from test_helper import( wait_and_click, appium_server_url, wait_for_element,
                          swipe, driver, enter_text_and_hide_keyboard, perform_actions_with_wait, appium_capabilities,
-                         load_locators_card, load_locators)
+                         load_locators_card, load_locators, landing_page)
 from Card_and_Stikers import test_cards
 from login import test_login, negative_test_login
 from account_test import payment
@@ -12,39 +12,45 @@ from card_detail_test import test_card_detail
 from count_and_transactions_test import test_count_and_transaction
 from Deposits_products import test_deposits_products
 from incoming_transactions_test import test_incoming_transaction
+from landing_page import test_landing_page
 # from Loan_products import test_loan_products
 
 
+# @pytest.mark.run(order=1)
+# def test_scenario_1(test_login):
+#     assert True
+
+
 @pytest.mark.run(order=1)
-def test_scenario_1(test_login):
+def test_scenario_1(test_landing_page):
     assert True
 
 
-@pytest.mark.run(order=2)
-def test_scenario_2(negative_test_login):
-    assert True
-
-
-@pytest.mark.run(order=3)
-def test_scenario_3(test_login, test_cards):
-    assert True
-
-
-
-# @pytest.mark.run(order=4)
-# def test_scenario_4(test_login, test_card_detail):
+# @pytest.mark.run(order=2)
+# def test_scenario_2(negative_test_login):
 #     assert True
 #
-
-
-@pytest.mark.run(order=5)
-def test_scenario_5(test_login, current_account):
-    assert True
-
-
-@pytest.mark.run(order=6)
-def test_scenario_6(test_login, payment):
-    assert True
+#
+# @pytest.mark.run(order=3)
+# def test_scenario_3(test_login, test_cards):
+#     assert True
+#
+#
+#
+# # @pytest.mark.run(order=4)
+# # def test_scenario_4(test_login, test_card_detail):
+# #     assert True
+# #
+#
+#
+# @pytest.mark.run(order=5)
+# def test_scenario_5(test_login, current_account):
+#     assert True
+#
+#
+# @pytest.mark.run(order=6)
+# def test_scenario_6(test_login, payment):
+#     assert True
 
 
 # @pytest.mark.run(order=7)

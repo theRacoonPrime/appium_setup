@@ -76,6 +76,12 @@ def load_locators():
 
 
 @pytest.fixture
+def landing_page():
+    with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/data_landing_page.json') as f:
+        return json.load(f)
+
+
+@pytest.fixture
 def appium_capabilities():
     # Load appium_capabilities from JSON file
     with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/capabilities.json') as f:
