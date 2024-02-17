@@ -15,7 +15,8 @@ from test_helper import( wait_and_click, appium_server_url, wait_for_element, lo
 
 @pytest.fixture
 def test_landing_page(driver, perform_actions_with_wait, load_locators, landing_page):
-    locators_data = load_locators  # Use it as a fixture, not a function
+    locators_data = load_locators
+    landing_page = landing_page    # Use it as a fixture, not a function
     driver.implicitly_wait(5)
 
     # Add a sleep time before the test actions
@@ -35,12 +36,18 @@ def test_landing_page(driver, perform_actions_with_wait, load_locators, landing_
         {'action': 'wait_and_click', 'locator': locators_data['confirm_button']},
         {'action': 'wait_and_click', 'locator': locators_data['device_name']},
         {'action': 'wait_and_click', 'locator': locators_data['go_to_app_button']},
+        {'action': 'wait_and_click', 'locator': locators_data['menu_button']},
+        {'action': 'wait_and_click', 'locator': locators_data['exit_from_settings_button']},
         {'action': 'wait_and_click', 'locator': landing_page['chat_button']},
         {'action': 'wait_and_click', 'locator': landing_page['exit_from_chat']},
+        {'action': 'wait_and_click', 'locator': landing_page['rate_button']},
+        {'action': 'wait_and_click', 'locator': landing_page['exit_from_rate_button']},
         {'action': 'wait_and_click', 'locator': landing_page['IPS']},
         {'action': 'enter_text_and_hide_keyboard', 'locator': landing_page['ips_confirm'], 'text': '123456'},
         {'action': 'wait_and_click', 'locator': landing_page['Confirm_button']},
         {'action': 'wait_and_click', 'locator': landing_page['exit_from_IPS']},
+        {'action': 'wait_and_click', 'locator': landing_page['locations_button']},
+        {'action': 'wait_and_click', 'locator': landing_page['exit_from_locations_button']},
         {'action': 'wait_and_click', 'locator': landing_page['hamburger']},
         {'action': 'wait_and_click', 'locator': landing_page['Contacts']},
         {'action': 'wait_and_click', 'locator': landing_page['Exit_from_contacts']},

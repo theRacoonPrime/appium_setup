@@ -1,5 +1,7 @@
 {
   "already_have_account": "//android.widget.Button[@content-desc=\"I already have account\"]",
+  "exit_from_settings_button": "//android.widget.Button",
+  "menu_button": "//android.view.View[@content-desc=\"Menu\nMenu\"]",
   "continue_button": "//android.widget.Button[@content-desc=\"Continue\"]",
   "confirm_button": "//android.widget.Button[@content-desc=\"Confirm\"]",
   "Sms_code_button": "//android.widget.EditText",
