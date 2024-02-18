@@ -1,7 +1,7 @@
 import pytest
 from test_helper import( wait_and_click, appium_server_url, wait_for_element,
                          swipe, driver, enter_text_and_hide_keyboard, perform_actions_with_wait, appium_capabilities,
-                         load_locators_card, load_locators, landing_page)
+                         load_locators_card, load_locators, landing_page, settings_load)
 from Card_and_Stikers import test_cards
 from login import test_login, negative_test_login
 from account_test import payment
@@ -13,6 +13,7 @@ from count_and_transactions_test import test_count_and_transaction
 from Deposits_products import test_deposits_products
 from incoming_transactions_test import test_incoming_transaction
 from landing_page import test_landing_page
+from settings import test_settings
 # from Loan_products import test_loan_products
 
 
@@ -22,7 +23,7 @@ from landing_page import test_landing_page
 
 
 @pytest.mark.run(order=1)
-def test_scenario_1(test_landing_page):
+def test_scenario_1(test_settings):
     assert True
 
 
