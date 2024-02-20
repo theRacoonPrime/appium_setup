@@ -56,7 +56,7 @@ Here I will briefly describe how to setup, Appium, Python, JDK, Docker, Selenium
 
 
 ## Usage
-
+pytest -k test_scenario_1 command to run tests one by one 
 
 ## Contributing
 
