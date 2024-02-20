@@ -17,13 +17,13 @@ from settings import test_settings
 # from Loan_products import test_loan_products
 
 
-# @pytest.mark.run(order=1)
-# def test_scenario_1(test_login):
-#     assert True
-
-
 @pytest.mark.run(order=1)
-def test_scenario_1(test_settings):
+def test_scenario_1(test_login):
+    assert True
+
+
+@pytest.mark.run(order=2)
+def test_scenario_2(test_settings):
     assert True
 
 
