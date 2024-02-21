@@ -3,7 +3,7 @@
   "platformName": "Android",
   "udid": "RZCW711MGVY",
   "deviceName": "A34",
-  "app": "/Users/andrey/Downloads/app-development-release (10).apk",
+  "app": "/Users/andrey/Downloads/app-staging-release.apk",
   "appWaitForLaunch": "false",
   "autoGrantPermissions": true
 }

@@ -1,4 +1,8 @@
 {
+  "account": "//android.widget.Button[@content-desc=\"I already have account\"]",
+  "number_phone" : "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]",
+  "digit_number": "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2]",
+  "Continue": "//android.widget.Button[@content-desc=\"Continue\"]",
   "user_Current account Multicurrency_digit": "4116",
   "user_Current account Multicurrency_Phone": "38118823339",
   "user_Term loan account_digit": "5262",

@@ -88,7 +88,7 @@ def settings_load():
 
 
 @pytest.fixture
-def user_data():
+def user_data_load():
     with open('/Users/andrey/Desktop/appium_setup/mobile_testing/android/user_data.json') as f:
         return json.load(f)
 
